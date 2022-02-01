@@ -18,11 +18,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "operaciones")
 public class Operation implements Serializable {	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -7284202363621680027L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

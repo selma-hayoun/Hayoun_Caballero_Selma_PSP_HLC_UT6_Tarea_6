@@ -24,11 +24,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Cuentas")
 public class Account implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -7832598417420416800L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +39,7 @@ public class Account implements Serializable {
 	
 	@NotEmpty(message = "no puede estar vacio")	
 	@Column(name = "Saldo", nullable = false)
-	private double balance;//Inicio en 0
+	private double balance = 0;//Inicio en 0
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Account> myOwners;

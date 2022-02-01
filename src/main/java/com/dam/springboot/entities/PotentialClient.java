@@ -20,10 +20,7 @@ import javax.validation.constraints.Size;
 @Table(name = "usuarios")
 public class PotentialClient implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1803790271702099277L;//Genera un número único
 
 	@Id
 	private String nif;
