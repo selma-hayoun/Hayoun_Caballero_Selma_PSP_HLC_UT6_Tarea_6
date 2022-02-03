@@ -36,7 +36,7 @@ public class Account implements Serializable {
 	private Long id;
 	
 	@NotEmpty(message = "no puede estar vacio")
-	@Column(name = "Numero_Cuenta", unique=true)
+	@Column(name = "NumeroCuenta", unique=true)
 	private Long numAccount;
 	
 	@NotNull(message = "no puede estar vacio")
