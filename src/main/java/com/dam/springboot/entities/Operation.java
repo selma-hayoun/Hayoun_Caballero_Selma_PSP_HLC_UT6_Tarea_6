@@ -21,11 +21,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "operaciones")
 public class Operation implements Serializable {	
 
-	private static final long serialVersionUID = -7284202363621680027L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Codigo")
 	private Long id;
 	
 	@Column(name = "Operacion")
@@ -40,8 +42,38 @@ public class Operation implements Serializable {
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "Cantidad")
 	private double amount;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public OperationType getOp() {
+		return op;
+	}
+
+	public void setOp(OperationType op) {
+		this.op = op;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Account acc;//Contiene al cliente que hace la operación
 	
 }

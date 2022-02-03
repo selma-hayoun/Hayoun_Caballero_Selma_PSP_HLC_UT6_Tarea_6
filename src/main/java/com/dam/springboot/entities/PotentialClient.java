@@ -1,15 +1,20 @@
 package com.dam.springboot.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -20,9 +25,17 @@ import javax.validation.constraints.Size;
 @Table(name = "usuarios")
 public class PotentialClient implements Serializable {
 
-	private static final long serialVersionUID = -1803790271702099277L;//Genera un número único
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotEmpty(message = "no puede estar vacio")
+	@Column(name = "NIF", unique=true)
 	private String nif;
 	
 	@NotEmpty(message = "no puede estar vacio")
@@ -50,7 +63,19 @@ public class PotentialClient implements Serializable {
 	private int tphno;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Account> myAccounts;
+	@JoinTable(name = "client_account",
+    	joinColumns = @JoinColumn(name = "potentialclient_id"),
+    	inverseJoinColumns = @JoinColumn(name = "account_id"))
+	private List<Account> myAccounts;
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNif() {
 		return nif;
@@ -108,13 +133,15 @@ public class PotentialClient implements Serializable {
 		this.tphno = tphno;
 	}
 
-	public Set<Account> getMyAccounts() {
+	public List<Account> getMyAccounts() {
 		return myAccounts;
 	}
 
-	public void setMyAccounts(Set<Account> myAccounts) {
+	public void setMyAccounts(List<Account> myAccounts) {
 		this.myAccounts = myAccounts;
 	}
+
+
 	
 	
 }

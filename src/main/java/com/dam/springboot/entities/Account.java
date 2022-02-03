@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -25,12 +26,18 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Cuentas")
 public class Account implements Serializable {
 
-	private static final long serialVersionUID = -7832598417420416800L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Numero")
 	private Long id;
+	
+	@NotEmpty(message = "no puede estar vacio")
+	@Column(name = "Numero_Cuenta", unique=true)
+	private Long numAccount;
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaAlta")
@@ -41,11 +48,61 @@ public class Account implements Serializable {
 	@Column(name = "Saldo", nullable = false)
 	private double balance = 0;//Inicio en 0
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Account> myOwners;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myAccounts")
+	private List<PotentialClient> myOwners;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private List<Operation> operations;	
+	@JoinColumn(name = "account_id")
+	private List<Operation> operations;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getNumAccount() {
+		return numAccount;
+	}
+
+	public void setNumAccount(Long numAccount) {
+		this.numAccount = numAccount;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+
+	public List<PotentialClient> getMyOwners() {
+		return myOwners;
+	}
+
+	public void setMyOwners(List<PotentialClient> myOwners) {
+		this.myOwners = myOwners;
+	}
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
+	}	
 	
 
 }
