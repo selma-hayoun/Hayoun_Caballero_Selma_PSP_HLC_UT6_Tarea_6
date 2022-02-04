@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "operaciones")
 public class Operation implements Serializable {	
@@ -40,38 +43,5 @@ public class Operation implements Serializable {
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "Cantidad")
 	private double amount;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public OperationType getOp() {
-		return op;
-	}
-
-	public void setOp(OperationType op) {
-		this.op = op;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-	
 	
 }

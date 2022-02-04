@@ -1,7 +1,6 @@
 package com.dam.springboot.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +19,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "usuarios")
 public class PotentialClient implements Serializable {
@@ -59,89 +60,14 @@ public class PotentialClient implements Serializable {
 	private String email;
 	
 	@NotEmpty(message = "no puede estar vacio")
+	@Size(min = 9, max = 18, message = "el tamaño tiene que estar entre 9 y 18")
 	@Column(nullable = false)
-	private int tphno;
+	private String tphno;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "client_account",
     	joinColumns = @JoinColumn(name = "potentialclient_id"),
     	inverseJoinColumns = @JoinColumn(name = "account_id"))
-	private List<Account> myAccounts;
-
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNif() {
-		return nif;
-	}
-
-	public void setNif(String nif) {
-		this.nif = nif;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getYearBirth() {
-		return yearBirth;
-	}
-
-	public void setYearBirth(int yearBirth) {
-		this.yearBirth = yearBirth;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getTphno() {
-		return tphno;
-	}
-
-	public void setTphno(int tphno) {
-		this.tphno = tphno;
-	}
-
-	public List<Account> getMyAccounts() {
-		return myAccounts;
-	}
-
-	public void setMyAccounts(List<Account> myAccounts) {
-		this.myAccounts = myAccounts;
-	}
-
-
-	
+	private Set<Account> myAccounts;
 	
 }

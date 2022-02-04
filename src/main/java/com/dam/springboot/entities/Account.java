@@ -22,6 +22,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "Cuentas")
 public class Account implements Serializable {
@@ -37,7 +40,7 @@ public class Account implements Serializable {
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(name = "NumeroCuenta", unique=true)
-	private Long numAccount;
+	private String numAccount;
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaAlta")
@@ -49,60 +52,10 @@ public class Account implements Serializable {
 	private double balance = 0;//Inicio en 0
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myAccounts")
-	private List<PotentialClient> myOwners;
+	private Set<PotentialClient> myOwners;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")
-	private List<Operation> operations;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Long getNumAccount() {
-		return numAccount;
-	}
-
-	public void setNumAccount(Long numAccount) {
-		this.numAccount = numAccount;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
-
-	public List<PotentialClient> getMyOwners() {
-		return myOwners;
-	}
-
-	public void setMyOwners(List<PotentialClient> myOwners) {
-		this.myOwners = myOwners;
-	}
-
-	public List<Operation> getOperations() {
-		return operations;
-	}
-
-	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
-	}	
-	
+	private List<Operation> operations;	
 
 }
