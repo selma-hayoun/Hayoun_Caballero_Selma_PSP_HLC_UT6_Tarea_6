@@ -19,9 +19,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
 @Entity
 @Table(name = "usuarios")
 public class PotentialClient implements Serializable {
@@ -33,41 +32,49 @@ public class PotentialClient implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Getter @Setter private Long id;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(name = "NIF", unique=true)
-	private String nif;
+	@Getter @Setter private String nif;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(name = "Apellidos")
-	private String surname;
+	@Getter @Setter private String surname;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 4, max = 24, message = "el tamaño tiene que estar entre 4 y 24")
 	@Column(name = "Nombre", nullable = false)
-	private String name;	
+	@Getter @Setter private String name;	
 	
 	@Column(name = "AnyoNacimiento")
-	private int yearBirth;	
+	@Getter @Setter private int yearBirth;	
 	
 	@Column(name = "Direccion")
-	private String address;
+	@Getter @Setter private String address;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Email(message = "no es una dirección de correo bien formada")
 	@Column(nullable = false, unique = true)
-	private String email;
+	@Getter @Setter private String email;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 9, max = 18, message = "el tamaño tiene que estar entre 9 y 18")
 	@Column(nullable = false)
-	private String tphno;
+	@Getter @Setter private String tphno;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "client_account",
     	joinColumns = @JoinColumn(name = "potentialclient_id"),
     	inverseJoinColumns = @JoinColumn(name = "account_id"))
-	private Set<Account> myAccounts;
+	@Getter @Setter private Set<Account> myAccounts;
+
+	@Override
+	public String toString() {
+		return "PotentialClient [id=" + id + ", nif=" + nif + ", surname=" + surname + ", name=" + name + ", yearBirth="
+				+ yearBirth + ", address=" + address + ", email=" + email + ", tphno=" + tphno + "]";
+	}
+	
+	
 	
 }

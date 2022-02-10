@@ -3,10 +3,12 @@ package com.dam.springboot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dam.springboot.entities.PotentialClient;
 import com.dam.springboot.repositories.PotentialClientRepository;
 
+@Service
 public class PotentialClientServiceImpl implements PotentialClientServiceI{
 
 	@Autowired
@@ -19,7 +21,7 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 
 	@Override
 	public PotentialClient getPotentialClientByNif(String nif) {
-		return potentialClientRepository.getByNif(nif);
+		return (PotentialClient) potentialClientRepository.getByNif(nif);
 	}
 
 	@Override

@@ -3,10 +3,12 @@ package com.dam.springboot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dam.springboot.entities.Account;
 import com.dam.springboot.repositories.AccountRepository;
 
+@Service
 public class AccountServiceImpl implements AccountServiceI {
 	
 	@Autowired
@@ -19,7 +21,7 @@ public class AccountServiceImpl implements AccountServiceI {
 
 	@Override
 	public Account getAccountByNumAccount(String numAccount) {
-		return accRepository.getByNumAccount(numAccount);
+		return (Account) accRepository.getByNumAccount(numAccount);
 	}
 
 	@Override

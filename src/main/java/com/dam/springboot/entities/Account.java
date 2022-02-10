@@ -22,9 +22,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
 @Entity
 @Table(name = "Cuentas")
 public class Account implements Serializable {
@@ -36,26 +35,34 @@ public class Account implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Getter @Setter private Long id;
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Column(name = "NumeroCuenta", unique=true)
-	private String numAccount;
+	@Getter @Setter private String numAccount;
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaAlta")
 	@Temporal(TemporalType.DATE)
-	private Date createAt;
+	@Getter @Setter private Date createAt;
 	
 	@NotEmpty(message = "no puede estar vacio")	
 	@Column(name = "Saldo", nullable = false)
-	private double balance = 0;//Inicio en 0
+	@Getter @Setter private double balance = 0;//Inicio en 0
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myAccounts")
-	private Set<PotentialClient> myOwners;
+	@Getter @Setter private Set<PotentialClient> myOwners;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")
-	private List<Operation> operations;	
+	@Getter @Setter private List<Operation> operations;
+
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", numAccount=" + numAccount + ", createAt=" + createAt + ", balance=" + balance
+				+ "]";
+	}	
+	
+	
 
 }

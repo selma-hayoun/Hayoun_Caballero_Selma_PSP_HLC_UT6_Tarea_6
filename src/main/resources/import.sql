@@ -5,7 +5,7 @@ INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_n
 INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_nacimiento) VALUES (4, 'Calle Tomellosera', 'quijote_y_sancho_panza@gmail.com', 'Dorita', '4444D', 'Adoración Rodrigo', '695924244', 1943);
 INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_nacimiento) VALUES (5, 'Arrubial de la palmera', 'givememusic_givemelife@gmail.com', 'Rafa', '5555E', 'Jurado Barrón', '695924255', 1989);
 INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_nacimiento) VALUES (6, 'Calle del pozo', 'lluevacafeenelcampo@gmail.com', 'Lupita', '6666F', 'Campos', '695924266', 1980);
-INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_nacimiento) VALUES (6, 'Calle de la soledad', 'massoloquelauna@gmail.com', 'Javier', '6666F', 'Rodriguez Linares', '695924277', 1996);
+INSERT INTO usuarios(id, direccion, email, nombre, nif, apellidos, tphno, anyo_nacimiento) VALUES (7, 'Calle de la soledad', 'massoloquelauna@gmail.com', 'Javier', '7777F', 'Rodriguez Linares', '695924277', 1996);
 
 
 /*TABLA CUENTAS - ACCOUNT*/

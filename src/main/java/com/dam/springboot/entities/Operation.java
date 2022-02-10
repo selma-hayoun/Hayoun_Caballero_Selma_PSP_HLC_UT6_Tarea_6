@@ -15,9 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
 @Entity
 @Table(name = "operaciones")
 public class Operation implements Serializable {	
@@ -29,19 +28,26 @@ public class Operation implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Getter @Setter private Long id;
 	
 	@Column(name = "Operacion")
 	@Enumerated(value = EnumType.STRING)
-	private OperationType op;
+	@Getter @Setter private OperationType op;
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaOperacion")
 	@Temporal(TemporalType.DATE)
-	private Date createAt;
+	@Getter @Setter private Date createAt;
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "Cantidad")
-	private double amount;
+	@Getter @Setter private double amount;
+
+	@Override
+	public String toString() {
+		return "Operation [id=" + id + ", op=" + op + ", createAt=" + createAt + ", amount=" + amount + "]";
+	}
+	
+	
 	
 }

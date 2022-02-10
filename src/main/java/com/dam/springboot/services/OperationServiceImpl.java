@@ -3,10 +3,12 @@ package com.dam.springboot.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dam.springboot.entities.Operation;
 import com.dam.springboot.repositories.OperationRepository;
 
+@Service
 public class OperationServiceImpl implements OperationServiceI{
 
 	@Autowired
