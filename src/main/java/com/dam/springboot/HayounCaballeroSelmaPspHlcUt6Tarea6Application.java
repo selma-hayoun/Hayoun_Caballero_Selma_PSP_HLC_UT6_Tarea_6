@@ -8,7 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.util.CollectionUtils;
 
+import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.PotentialClient;
+import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
 @SpringBootApplication
@@ -19,6 +21,10 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 	 * Utilizamos la etiqueta @Qualify(nombreDeLaClase) */
 	@Autowired
 	private PotentialClientServiceI potentialClientServiceI;
+	
+	@Autowired
+	private AccountServiceI accServiceI;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(HayounCaballeroSelmaPspHlcUt6Tarea6Application.class, args);
@@ -55,6 +61,15 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 		PotentialClient pclt = potentialClientServiceI.getPotentialClientByNif("1111A");
 		
 		System.out.println(pclt.toString());
+		
+		//Obtención de cuentas de cliente = 3
+		List<Long> accountsId = potentialClientServiceI.findAccountsIdById(3L);
+		
+		List<Account> clientAccounts = accServiceI.findAccountsById(accountsId);
+		
+		for (Account acc : clientAccounts) {
+			System.out.println(acc.toString());
+		}
 		
 		//Eliminar cliente potencial por id
 		potentialClientServiceI.removePotentialClientById(pclt.getId());

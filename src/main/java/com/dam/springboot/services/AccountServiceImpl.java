@@ -44,4 +44,9 @@ public class AccountServiceImpl implements AccountServiceI {
 		accRepository.save(acc);
 	}
 
+	@Override
+	public List<Account> findAccountsById(List<Long> accIds) {
+		return accRepository.findAllById(accIds);
+	}
+
 }

@@ -49,4 +49,9 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 		potentialClientRepository.save(c);
 	}
 
+	@Override	
+	public List<Long> findAccountsIdById(Long id) {
+		return potentialClientRepository.findAccountsIdById(id);
+	}
+
 }

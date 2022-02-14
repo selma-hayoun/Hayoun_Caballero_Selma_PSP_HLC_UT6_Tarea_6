@@ -16,5 +16,7 @@ public interface AccountServiceI {
 	public void removeAccountById(long IdAccount);
 	
 	public void updateAccount(Account acc);	
+	
+	public List<Account> findAccountsById(List<Long> accIds);
 
 }
