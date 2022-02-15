@@ -36,7 +36,7 @@ public class PotentialClientController {
 		model.addAttribute("pClientsListView", pcList);
 		model.addAttribute("btnDropPClientEnabled", Boolean.FALSE);
 		
-		return "showPotentialClients";
+		return "showPotentialClients";//HTML-Vista de Templates que muestra los coches
 	}
 	
 	@PostMapping("/actDropPClient")
@@ -44,6 +44,7 @@ public class PotentialClientController {
 		// Eliminación de Cliente Potencial
 		pClientServiceI.removePotentialClientById(Long.valueOf(pClientId));
 		
-		return "redirect:showPotentialClientsView";
+		return "redirect:showPotentialClientsView";//Redirigiendo dentro de un método del controlador 
+		//A otro método de la vista
 	}
 }
