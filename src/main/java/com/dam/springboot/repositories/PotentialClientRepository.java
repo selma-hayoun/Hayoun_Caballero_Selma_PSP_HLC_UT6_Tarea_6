@@ -15,9 +15,9 @@ public interface PotentialClientRepository extends JpaRepository<PotentialClient
 	
 	PotentialClient getByNif(String nif);
 	
-	List<PotentialClient> findByNifLike(String nif);
+	List<PotentialClient> findByNifContaining(String nif);
 	
-	List<PotentialClient> findByNameLike(String name);	
+	List<PotentialClient> findByNameContaining(String name);	
 	
 	@Query(value = "SELECT c.account_id FROM client_account c WHERE c.potentialclient_id = :id",
 			nativeQuery = true)

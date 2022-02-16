@@ -50,7 +50,7 @@ public class PotentialClient implements Serializable {
 	@Getter @Setter private String name;	
 	
 	@Column(name = "AnyoNacimiento")
-	@Getter @Setter private int yearBirth;	
+	@Getter @Setter private Integer yearBirth;	
 	
 	@Column(name = "Direccion")
 	@Getter @Setter private String address;

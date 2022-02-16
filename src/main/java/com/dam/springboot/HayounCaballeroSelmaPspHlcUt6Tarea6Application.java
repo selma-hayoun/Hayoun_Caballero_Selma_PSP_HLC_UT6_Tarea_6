@@ -47,7 +47,7 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 		System.out.println("--------------------------");
 		
 		//Obtención de elementos por NIF (like)
-		List<PotentialClient> cltList2 = potentialClientServiceI.findPotentialClientByNifLike("F");
+		List<PotentialClient> cltList2 = potentialClientServiceI.findPotentialClientByNifContaining("F");
 		
 		if(!CollectionUtils.isEmpty(cltList2)) {
 			for(PotentialClient c : cltList2) {

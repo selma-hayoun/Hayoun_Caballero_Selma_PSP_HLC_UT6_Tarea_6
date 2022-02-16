@@ -25,13 +25,13 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 	}
 
 	@Override
-	public List<PotentialClient> findPotentialClientByNifLike(String nif) {
-		return potentialClientRepository.findByNifLike(nif);
+	public List<PotentialClient> findPotentialClientByNifContaining(String nif) {
+		return potentialClientRepository.findByNifContaining(nif);
 	}
 
 	@Override
-	public List<PotentialClient> findPotentialClientByNameLike(String name) {
-		return potentialClientRepository.findByNameLike(name);
+	public List<PotentialClient> findPotentialClientByNameContaining(String name) {
+		return potentialClientRepository.findByNameContaining(name);
 	}
 
 	@Override

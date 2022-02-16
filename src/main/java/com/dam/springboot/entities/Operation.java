@@ -43,7 +43,7 @@ public class Operation implements Serializable {
 	
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "Cantidad")
-	@Getter @Setter private double amount;
+	@Getter @Setter private double amount = 0;
 
 	@Override
 	public String toString() {
