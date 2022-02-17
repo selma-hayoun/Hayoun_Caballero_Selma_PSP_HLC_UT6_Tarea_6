@@ -91,12 +91,20 @@ public class PotentialClientController {
 	@PostMapping("/actAddClient")
 	private String addNewPotentialClient(@Valid @ModelAttribute PotentialClient newClient, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			System.out.println(newClient.toString());
-			System.out.println(result.toString());
 			throw new Exception("Parámetros de alta erróneos");
 		} else {
 			// Se añade el nuevo cliente
 			pClientServiceI.addPotentialClient(newClient);		
+		}
+		return "redirect:showPotentialClientsView";
+	}
+	
+	@PostMapping("/actUpdateClient")
+	private String updatePotentialClient(@Valid @ModelAttribute PotentialClient client, BindingResult result) throws Exception {
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de alta erróneos");
+		} else {
+			pClientServiceI.updatePotentialClient(client);		
 		}
 		return "redirect:showPotentialClientsView";
 	}

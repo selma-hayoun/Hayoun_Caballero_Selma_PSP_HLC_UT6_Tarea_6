@@ -1,12 +1,22 @@
 package com.dam.springboot.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.dam.springboot.services.PotentialClientServiceI;
 
 @Controller
 @RequestMapping("*")
 public class SystemController {
+	
+	@Autowired
+	private PotentialClientServiceI pClientServiceI;
+	
 	//Capta cualquier solicitud
 	@GetMapping
 	public String showIndex() {
@@ -25,6 +35,12 @@ public class SystemController {
 		return "newClient";
 	}
 	
+	@PostMapping("/updateClientView")
+	public String updateClientForm(@RequestParam Long pClientId, Model model) {
+		model.addAttribute("myClient", pClientServiceI.getById(pClientId));
+		return "updateClient";
+	}
+	
 	//Redirecciona a vista de buscar Clientes
 	@GetMapping("/searchClientBy")
 	public String showSearchForm() {
@@ -34,7 +50,7 @@ public class SystemController {
 	//Redirecciona al controlador de gestión de cuentas
 	@GetMapping("/accountsView")
 	public String redirectToCarSearchByTemplate() {
-		return "redirect:showAccountsView";
+		return "redirect:showAccountsView";//Otro método del controlador
 	}
 	
 	//Para operar

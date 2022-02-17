@@ -11,6 +11,8 @@ public interface PotentialClientServiceI {
 	
 	public PotentialClient getPotentialClientByNif(String nif);
 	
+	public PotentialClient getById(Long id);
+	
 	public List<PotentialClient> findPotentialClientByNifContaining(String nif);
 	
 	public List<PotentialClient> findPotentialClientByNameContaining(String name);
