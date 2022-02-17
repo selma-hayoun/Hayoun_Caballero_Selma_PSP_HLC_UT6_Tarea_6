@@ -49,4 +49,9 @@ public class AccountServiceImpl implements AccountServiceI {
 		return accRepository.findAllById(accIds);
 	}
 
+	@Override
+	public Account getById(Long id) {
+		return accRepository.getById(id);
+	}
+
 }

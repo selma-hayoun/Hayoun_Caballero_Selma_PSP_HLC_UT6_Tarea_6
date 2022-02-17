@@ -11,6 +11,8 @@ public interface AccountServiceI {
 	
 	public List<Account> findAccountByNumAccountLike(String numAccount);
 	
+	public Account getById(Long id);
+	
 	public void addAccount(Account acc);
 	
 	public void removeAccountById(long IdAccount);

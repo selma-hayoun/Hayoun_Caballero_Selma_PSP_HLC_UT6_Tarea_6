@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
 @Controller
@@ -16,6 +17,9 @@ public class SystemController {
 	
 	@Autowired
 	private PotentialClientServiceI pClientServiceI;
+	
+	@Autowired
+	private AccountServiceI accountServiceI;
 	
 	//Capta cualquier solicitud
 	@GetMapping
@@ -35,22 +39,42 @@ public class SystemController {
 		return "newClient";
 	}
 	
+	//Redirecciona a la vista de actualizar clientes
 	@PostMapping("/updateClientView")
 	public String updateClientForm(@RequestParam Long pClientId, Model model) {
-		model.addAttribute("myClient", pClientServiceI.getById(pClientId));
+		model.addAttribute("myClient", accountServiceI.getById(pClientId));
 		return "updateClient";
 	}
 	
 	//Redirecciona a vista de buscar Clientes
 	@GetMapping("/searchClientBy")
-	public String showSearchForm() {
+	public String showClientSearchForm() {
 		return "searchClientBy";
 	}
 	
-	//Redirecciona al controlador de gestión de cuentas
+	//Redirecciona al controlador de gestión de cuentas: Listado
 	@GetMapping("/accountsView")
-	public String redirectToCarSearchByTemplate() {
-		return "redirect:showAccountsView";//Otro método del controlador
+	public String redirectToAccountsController() {
+		return "redirect:showAccountsView";
+	}
+	
+	//Redirecciona a vista de añadir cuentas
+	@GetMapping("/newAccountView")
+	public String showNewAccountForm() {
+		return "newAccount";
+	}
+	
+	//Redirecciona a la vista de actualizar cuentas
+	@PostMapping("/updateAccountView")
+	public String updateAccountForm(@RequestParam Long accId, Model model) {
+		model.addAttribute("myAccount", pClientServiceI.getById(accId));
+		return "updateAccount";
+	}
+	
+	//Redirecciona a vista de buscar cuentas
+	@GetMapping("/searchAccountBy")
+	public String showAccountSearchForm() {
+		return "searchAccountBy";
 	}
 	
 	//Para operar
