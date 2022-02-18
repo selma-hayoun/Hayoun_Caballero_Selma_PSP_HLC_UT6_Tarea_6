@@ -13,6 +13,7 @@
 				<form th:action="@{/actUpdateAccount}" th:object="${acc}" method="POST">
 				<!--ID DE LA CUENTA A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myAcc.id}" type="hidden" name="id"/>
+				<input th:value="${myAcc.createAt}" type="hidden" name="createAt"/>
 					<div class="form-group">
 			  			<label for="inpAccountRegs">Número de cuenta</label>
 			  			<input th:value="${myAcc.numAccount}" type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">

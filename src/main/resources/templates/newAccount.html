@@ -10,7 +10,7 @@
 		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">Datos Nueva Cuenta</div>
 		  <div class="card-body">
-				<form th:action="@{/actAddAccount}" th:object="${newAccount}" method="POST">
+				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST">
 					<div class="form-group">
 			  			<label for="inpAccountRegs">Número de cuenta</label>
 			  			<input type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">

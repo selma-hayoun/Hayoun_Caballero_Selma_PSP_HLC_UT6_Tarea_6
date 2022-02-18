@@ -67,7 +67,7 @@ public class SystemController {
 	//Redirecciona a la vista de actualizar cuentas
 	@PostMapping("/updateAccountView")
 	public String updateAccountForm(@RequestParam Long accId, Model model) {
-		model.addAttribute("myAccount", accountServiceI.getById(accId));
+		model.addAttribute("myAcc", accountServiceI.getById(accId));
 		return "updateAccount";
 	}
 	

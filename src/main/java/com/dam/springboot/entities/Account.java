@@ -61,18 +61,18 @@ public class Account implements Serializable {
 	@JoinColumn(name = "account_id")
 	@Getter @Setter private List<Operation> operations;
 	
-	@PrePersist
-	void createAt() {
-		// Creating the LocalDatetime object
-		LocalDate currentLocalDate = LocalDate.now();		
-		// Getting system timezone
-		ZoneId systemTimeZone = ZoneId.systemDefault();		
-		// converting LocalDateTime to ZonedDateTime with the system timezone
-		ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
-		// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
-		Date utilDate = Date.from(zonedDateTime.toInstant());
-		this.createAt = utilDate;
-	}
+//	@PrePersist
+//	void createAt() {
+//		// Creating the LocalDatetime object
+//		LocalDate currentLocalDate = LocalDate.now();		
+//		// Getting system timezone
+//		ZoneId systemTimeZone = ZoneId.systemDefault();		
+//		// converting LocalDateTime to ZonedDateTime with the system timezone
+//		ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
+//		// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+//		Date utilDate = Date.from(zonedDateTime.toInstant());
+//		this.createAt = utilDate;
+//	}
 
 	@Override
 	public String toString() {

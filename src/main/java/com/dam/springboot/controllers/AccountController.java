@@ -1,6 +1,10 @@
 package com.dam.springboot.controllers;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dam.springboot.entities.Account;
+import com.dam.springboot.models.AccountModel;
 import com.dam.springboot.services.AccountServiceI;
 
 @Controller
@@ -79,12 +84,42 @@ public class AccountController {
 	}
 
 	@PostMapping("/actAddAccount")
-	private String addNewAccount(@Valid @ModelAttribute Account newAccount, BindingResult result) throws Exception {
+	private String addNewAccount(@Valid @ModelAttribute AccountModel newAccountModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			System.out.println(newAccount.toString());
+			System.out.println(newAccountModel.toString());
+			// Creating the LocalDatetime object
+			LocalDate currentLocalDate = LocalDate.now();		
+			// Getting system timezone
+			ZoneId systemTimeZone = ZoneId.systemDefault();		
+			// converting LocalDateTime to ZonedDateTime with the system timezone
+			ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
+			// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+			Date utilDate = Date.from(zonedDateTime.toInstant());
+			System.out.println(utilDate.toString());
 			throw new Exception("Parámetros de alta erróneos");
 			
 		} else {
+			Account newAccount = new Account();
+			newAccount.setNumAccount(newAccountModel.getNumAccount());
+			// Creating the LocalDatetime object
+			LocalDate currentLocalDate = LocalDate.now();		
+			// Getting system timezone
+			ZoneId systemTimeZone = ZoneId.systemDefault();		
+			// converting LocalDateTime to ZonedDateTime with the system timezone
+			ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
+			// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+			Date utilDate = Date.from(zonedDateTime.toInstant());
+			// Seteamos la fecha actual
+			newAccount.setCreateAt(utilDate);
+			
+			double balance;
+			try {
+				balance = Double.parseDouble(newAccountModel.getBalance());
+			} catch (Exception e) {
+				balance = 0;
+			}
+			newAccount.setBalance(balance);
+			System.out.println(newAccount.toString());
 			// Se añade la nueva cuenta
 			accServiceI.addAccount(newAccount);		
 		}
