@@ -10,50 +10,42 @@
 	</head>
 	<body class="card-body">
 		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-		    <a class="navbar-brand" th:href="@{/clientsView}" role="button">LISTADO</a>
-			<a class="navbar-brand" th:href="@{/newClient}" role="button">AÑADIR</a>
-			<a class="navbar-brand" th:href="@{/searchClientBy}" role="button">BUSCAR</a>
+		    <a class="navbar-brand" th:href="@{/accountsView}" role="button">LISTADO</a>
+			<a class="navbar-brand" th:href="@{/newAccountView}" role="button">AÑADIR</a>
+			<a class="navbar-brand" th:href="@{/searchAccountByView}" role="button">BUSCAR</a>
 		</nav>
 		<div class="card text-white bg-dark mb-3">
-		  	<div class="card-header">Clientes</div>
+		  	<div class="card-header">CUENTAS BANCARIAS</div>
 			<div class="card-body">
 				<table class="table table-striped table-dark">
 					<thead class="thead-light">
 						<tr>
-							<th scope="col" th:hidden="${btnUpdatePClientEnabled}">Editar</th>
-							<th scope="col">ID del cliente</th>
-							<th scope="col">NIF</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">Apellidos</th>
-							<th scope="col">Año de nacimiento</th>
-							<th scope="col">Dirección</th>
-							<th scope="col">Email</th>
-							<th scope="col">Teléfono</th>
-							<th scope="col" th:hidden="${btnDropPClientEnabled}">Eliminar</th>
+							<th scope="col" th:hidden="${btnUpdateAccountEnabled}">Editar</th>
+							<th scope="col">ID CUENTA</th>
+							<th scope="col">Número de cuenta</th>
+							<th scope="col">Fecha de creación</th>
+							<th scope="col">Balance</th>
+							<th scope="col" th:hidden="${btnDropAccountEnabled}">Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
-						<th:block th:each="client : ${pClientsListView}">
+						<th:block th:each="acc : ${accListView}">
 							<tr>
-								<td scope="row" th:hidden="${btnUpdatePClientEnabled}">
-									<form action="updateClientView" method="post">
-										<button th:disabled="${btnUpdatePClientEnabled}" type="submit"
-											id="btnUpdatePClient" name="pClientId" th:value="${client.id}"
+								<td scope="row" th:hidden="${btnUpdateAccountEnabled}">
+									<form action="updateAccountView" method="post">
+										<button th:disabled="${btnUpdateAccountEnabled}" type="submit"
+											id="btnUpdateAccount" name="accId" th:value="${acc.id}"
 											class="btn btn-info"><i class="fa-solid fa-user-pen"></i></button>
 									</form>
 								</td>
-								<td scope="row" th:text="${client.id}" />
-								<td scope="row" th:text="${client.nif}" />
-								<td scope="row" th:text="${client.name}" />
-								<td scope="row" th:text="${client.surname}" />
-								<td scope="row" th:text="${client.yearBirth}" />
-								<td scope="row" th:text="${client.address}" />
-								<td scope="row" th:text="${client.email}" />
-								<td scope="row" th:text="${client.tphno}" />
-								<td scope="row" th:hidden="${btnDropPClientEnabled}">
-									<form action="actDropPClient" method="post">
-										<button th:disabled="${btnDropPClientEnabled}" type="submit"
-											id="btnDropPClient" name="pClientId" th:value="${client.id}"
+								<td scope="row" th:text="${acc.id}" />
+								<td scope="row" th:text="${acc.numAccount}" />
+								<td scope="row" th:text="${acc.createAt}" />
+								<td scope="row" th:text="${acc.balance}" />
+								<td scope="row" th:hidden="${btnDropAccountEnabled}">
+									<form action="actDropAccount" method="post">
+										<button th:disabled="${btnDropAccountEnabled}" type="submit"
+											id="btnDropAccount" name="accId" th:value="${acc.id}"
 											class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
 									</form>
 								</td>

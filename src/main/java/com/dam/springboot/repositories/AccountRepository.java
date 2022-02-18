@@ -12,6 +12,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
 	Account getByNumAccount(String numAccount);
 	
-	List<Account> findByNumAccountLike(String numAccount);
+	List<Account> findByNumAccountContaining(String numAccount);
  	
 }

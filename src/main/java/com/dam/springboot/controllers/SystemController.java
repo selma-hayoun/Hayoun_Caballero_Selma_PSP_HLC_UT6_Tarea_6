@@ -34,7 +34,7 @@ public class SystemController {
 	}
 	
 	//Redirecciona a vista de añadir Clientes
-	@GetMapping("/newClient")
+	@GetMapping("/newClientView")
 	public String showNewClientForm() {
 		return "newClient";
 	}
@@ -42,12 +42,12 @@ public class SystemController {
 	//Redirecciona a la vista de actualizar clientes
 	@PostMapping("/updateClientView")
 	public String updateClientForm(@RequestParam Long pClientId, Model model) {
-		model.addAttribute("myClient", accountServiceI.getById(pClientId));
+		model.addAttribute("myClient", pClientServiceI.getById(pClientId));
 		return "updateClient";
 	}
 	
 	//Redirecciona a vista de buscar Clientes
-	@GetMapping("/searchClientBy")
+	@GetMapping("/searchClientByView")
 	public String showClientSearchForm() {
 		return "searchClientBy";
 	}
@@ -67,12 +67,12 @@ public class SystemController {
 	//Redirecciona a la vista de actualizar cuentas
 	@PostMapping("/updateAccountView")
 	public String updateAccountForm(@RequestParam Long accId, Model model) {
-		model.addAttribute("myAccount", pClientServiceI.getById(accId));
+		model.addAttribute("myAccount", accountServiceI.getById(accId));
 		return "updateAccount";
 	}
 	
 	//Redirecciona a vista de buscar cuentas
-	@GetMapping("/searchAccountBy")
+	@GetMapping("/searchAccountByView")
 	public String showAccountSearchForm() {
 		return "searchAccountBy";
 	}

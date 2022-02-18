@@ -27,11 +27,11 @@ public class PotentialClientController {
 	@Autowired
 	private PotentialClientServiceI pClientServiceI;
 	
-	@RequestMapping("/home")
-	@ResponseBody
-	public String home() {
-		return "hello world";
-	}
+//	@RequestMapping("/home")
+//	@ResponseBody
+//	public String home() {
+//		return "HOME DE CLIENTES";
+//	}
 	
 	@GetMapping("/showPotentialClientsView")
 	public String showPotentialClients(Model model) {
@@ -42,7 +42,7 @@ public class PotentialClientController {
 		model.addAttribute("pClientsListView", pcList);
 		model.addAttribute("btnDropPClientEnabled", Boolean.FALSE);
 		
-		return "showPotentialClients";//HTML-Vista de Templates que muestra los coches
+		return "showPotentialClients";//HTML-Vista de Templates que muestra los clientes
 	}
 
 	

@@ -1,6 +1,9 @@
 package com.dam.springboot.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +20,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
@@ -43,12 +47,10 @@ public class Account implements Serializable {
 	@Column(name = "NumeroCuenta", unique=true)
 	@Getter @Setter private String numAccount;
 	
-	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaAlta")
 	@Temporal(TemporalType.DATE)
 	@Getter @Setter private Date createAt;
 	
-	@NotEmpty(message = "no puede estar vacio")	
 	@Column(name = "Saldo", nullable = false)
 	@Getter @Setter private double balance = 0;//Inicio en 0
 	
@@ -58,6 +60,19 @@ public class Account implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")
 	@Getter @Setter private List<Operation> operations;
+	
+	@PrePersist
+	void createAt() {
+		// Creating the LocalDatetime object
+		LocalDate currentLocalDate = LocalDate.now();		
+		// Getting system timezone
+		ZoneId systemTimeZone = ZoneId.systemDefault();		
+		// converting LocalDateTime to ZonedDateTime with the system timezone
+		ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
+		// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+		Date utilDate = Date.from(zonedDateTime.toInstant());
+		this.createAt = utilDate;
+	}
 
 	@Override
 	public String toString() {

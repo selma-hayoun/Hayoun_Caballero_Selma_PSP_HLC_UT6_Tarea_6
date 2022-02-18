@@ -6,41 +6,25 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
-		<body class="Clientd-body">
-		<div class="Clientd text-white bg-dark mb-3">
-		  <div class="Clientd-header">Datos Nuevo Cliente</div>
-		  <div class="Clientd-body">
-				<form th:action="@{/actAddClient}" th:object="${newClient}" method="POST">
+		<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Datos Nueva Cuenta</div>
+		  <div class="card-body">
+				<form th:action="@{/actAddAccount}" th:object="${newAccount}" method="POST">
 					<div class="form-group">
-			  			<label for="inpClientRegs">NIF</label>
-			  			<input type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
+			  			<label for="inpAccountRegs">Número de cuenta</label>
+			  			<input type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
 					</div>
+					<!--<div class="form-group">
+						  <label for="inpAccountDate">Fecha de creación</label>
+						  <input type="text" required="required" class="form-control" id="inpAccountDate" name="createAt" placeholder="Fecha de creación ...">
+					</div>-->
 					<div class="form-group">
-						  <label for="inpClientName">Nombre</label>
-						  <input type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
-					</div>
-					<div class="form-group">
-						  <label for="inpClientSurname">Apellidos</label>
-						  <input required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
-					</div>
-					<div class="form-group">
-						  <label for="inpClientYearBirth">Año de nacimiento</label>
-						  <input type="text" class="form-control" id="inpClientYearBirth" name="yearBirth" placeholder="Opcional">
-					</div>
-					<div class="form-group">
-						  <label for="inpClientAddress">Dirección</label>
-						  <input type="text" class="form-control" id="inpClientAddress" name="address" placeholder="Opcional">
-					</div>
-					<div class="form-group">
-						  <label for="inpClientEmail">Email</label>
-						  <input required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
-					</div>
-					<div class="form-group">
-						  <label for="inpClientTphno">Teléfono</label>
-						  <input required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
-					</div>
-					<button type="submit" name="btnAddClient" class="btn btn-success">Añadir</button>
-					<a class="btn btn-primary" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
+						  <label for="inpAccountBalance">Balance</label>
+						  <input type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance inicial ... (Opcional)">
+					</div>					
+					<button type="submit" name="btnAddAccount" class="btn btn-success">Añadir</button>
+					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

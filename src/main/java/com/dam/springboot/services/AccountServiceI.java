@@ -9,7 +9,7 @@ public interface AccountServiceI {
 	
 	public Account getAccountByNumAccount(String numAccount);
 	
-	public List<Account> findAccountByNumAccountLike(String numAccount);
+	public List<Account> findByNumAccountContaining(String numAccount);
 	
 	public Account getById(Long id);
 	

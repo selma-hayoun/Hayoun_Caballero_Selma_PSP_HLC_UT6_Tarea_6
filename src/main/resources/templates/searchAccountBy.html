@@ -6,21 +6,17 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
-	<body class="Clientd-body">
-		<div class="Clientd text-white bg-dark mb-3">
-		  <div class="Clientd-header">Búsqueda de clientes</div>
-		  <div class="Clientd-body">
-				<form th:action="@{/actSearchClient}" th:object="${searchedClient}" method="POST">
+	<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Búsqueda de cuentas</div>
+		  <div class="card-body">
+				<form th:action="@{/actSearchAccount}" th:object="${searchedAccount}" method="POST">
 					<div class="form-group">
-			  			<label for="inpRegistration">NIF</label>
-			  			<input type="text" class="form-control" id="inpTClientRegistr" name="nif" placeholder="NIF del cliente">
+			  			<label for="inpRegistration">Número de cuenta</label>
+			  			<input type="text" class="form-control" id="inpTAccountRegistr" name="numAccount" placeholder="Introduzca parte del número de cuenta ...">
 					</div>
-					<div class="form-group">
-						  <label for="inpName">Nombre</label>
-						  <input type="text" class="form-control" id="inpTname" name="name" placeholder="Nombre">
-					</div>
-					<button type="submit" name="btnSearchClientBy" class="btn btn-success">Buscar</button>
-					<a class="btn btn-primary" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
+					<button type="submit" name="btnSearchAccountBy" class="btn btn-success">Buscar</button>
+					<a class="btn btn-primary" href="showAccountView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

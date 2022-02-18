@@ -6,10 +6,10 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
-		<body class="Clientd-body">
-		<div class="Clientd text-white bg-dark mb-3">
-		  <div class="Clientd-header">Datos Cliente</div>
-		  <div class="Clientd-body">
+		<body class="card-body">
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">Datos Cliente</div>
+		  <div class="card-body">
 				<form th:action="@{/actUpdateClient}" th:object="${client}" method="POST">
 				<!--ID DEL CLIENTE A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myClient.id}" type="hidden" name="id"/>

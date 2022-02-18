@@ -24,10 +24,6 @@ public class AccountServiceImpl implements AccountServiceI {
 		return (Account) accRepository.getByNumAccount(numAccount);
 	}
 
-	@Override
-	public List<Account> findAccountByNumAccountLike(String numAccount) {
-		return accRepository.findByNumAccountLike(numAccount);
-	}
 
 	@Override
 	public void addAccount(Account acc) {
@@ -52,6 +48,11 @@ public class AccountServiceImpl implements AccountServiceI {
 	@Override
 	public Account getById(Long id) {
 		return accRepository.getById(id);
+	}
+
+	@Override
+	public List<Account> findByNumAccountContaining(String numAccount) {
+		return accRepository.findByNumAccountContaining(numAccount);
 	}
 
 }
