@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -54,12 +55,26 @@ public class Account implements Serializable {
 	@Column(name = "Saldo", nullable = false)
 	@Getter @Setter private double balance = 0;//Inicio en 0
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myAccounts")
+//	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "myAccounts")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "client_account",
+	joinColumns = @JoinColumn(name = "account_id"),
+	inverseJoinColumns = @JoinColumn(name = "potentialclient_id"))
 	@Getter @Setter private Set<PotentialClient> myOwners;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")
 	@Getter @Setter private List<Operation> operations;
+	
+//	public void addOwner(PotentialClient b) {
+//        myOwners.add(b);
+//        b.getMyAccounts().add(this);
+//    }
+
+    public void removeOwner(PotentialClient b) {
+    	myOwners.remove(b);
+        b.getMyAccounts().remove(this);
+    } 
 	
 //	@PrePersist
 //	void createAt() {

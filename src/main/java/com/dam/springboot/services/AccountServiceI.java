@@ -15,6 +15,8 @@ public interface AccountServiceI {
 	
 	public void addAccount(Account acc);
 	
+	public void removeAccountRegs(long IdAccount);
+	
 	public void removeAccountById(long IdAccount);
 	
 	public void updateAccount(Account acc);	

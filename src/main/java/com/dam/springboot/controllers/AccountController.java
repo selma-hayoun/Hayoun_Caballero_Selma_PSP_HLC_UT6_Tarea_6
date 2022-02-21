@@ -17,9 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dam.springboot.entities.Account;
 import com.dam.springboot.models.AccountModel;
@@ -127,10 +125,22 @@ public class AccountController {
 	}
 	
 	@PostMapping("/actUpdateAccount")
-	private String updateAccount(@Valid @ModelAttribute Account account, BindingResult result) throws Exception {
+	private String updateAccount(@Valid @ModelAttribute AccountModel acc, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de alta erróneos");
 		} else {
+			Account account = accServiceI.getById(acc.getId());
+			
+			//Seteamos los campos con los datos del modelo
+			account.setNumAccount(acc.getNumAccount());
+			double balance;
+			try {
+				balance = Double.parseDouble(acc.getBalance());
+			} catch (Exception e) {
+				balance = 0;
+			}
+			account.setBalance(balance);
+			
 			accServiceI.updateAccount(account);
 		}
 		return "redirect:showAccountsView";

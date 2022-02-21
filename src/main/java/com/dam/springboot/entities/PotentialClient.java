@@ -65,11 +65,22 @@ public class PotentialClient implements Serializable {
 	@Column(nullable = false)
 	@Getter @Setter private String tphno;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "client_account",
-    	joinColumns = @JoinColumn(name = "potentialclient_id"),
-    	inverseJoinColumns = @JoinColumn(name = "account_id"))
+//	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myOwners")
+//	@JoinTable(name = "client_account",
+//    	joinColumns = @JoinColumn(name = "potentialclient_id"),
+//    	inverseJoinColumns = @JoinColumn(name = "account_id"))
 	@Getter @Setter private Set<Account> myAccounts;
+	
+//	public void addAccount(Account b) {
+//        myAccounts.add(b);
+//        b.getMyOwners().add(this);
+//    }
+//
+//    public void removeAccount(Account b) {
+//    	myAccounts.remove(b);
+//        b.getMyOwners().remove(this);
+//    } 
 
 	@Override
 	public String toString() {

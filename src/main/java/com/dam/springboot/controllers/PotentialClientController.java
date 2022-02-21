@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.PotentialClient;
+import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
 @Controller
@@ -26,6 +28,9 @@ public class PotentialClientController {
 
 	@Autowired
 	private PotentialClientServiceI pClientServiceI;
+	
+	@Autowired
+	private AccountServiceI accServiceI;
 	
 //	@RequestMapping("/home")
 //	@ResponseBody
@@ -48,6 +53,9 @@ public class PotentialClientController {
 	
 	@PostMapping("/actDropPClient")
 	public String removePotentialClient(@RequestParam String pClientId, Model model) {
+		// Eliminamos sus registros de la tabla N:M		
+//		pClientServiceI.removePotentialClientRegs(Long.valueOf(pClientId));
+		
 		// Eliminación de Cliente Potencial
 		pClientServiceI.removePotentialClientById(Long.valueOf(pClientId));
 		

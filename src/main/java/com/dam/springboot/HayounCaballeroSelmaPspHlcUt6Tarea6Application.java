@@ -71,20 +71,20 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 			System.out.println(acc.toString());
 		}
 		
-		//Eliminar cliente potencial por id
-		potentialClientServiceI.removePotentialClientById(pclt.getId());
+//		//Eliminar cliente potencial por id
+//		potentialClientServiceI.removePotentialClientById(pclt.getId());
 		
-		//Añadir un cliente potencial
-		PotentialClient myTestClient = new PotentialClient();
-		myTestClient.setNif("8888B");
-		myTestClient.setSurname("Barasona Leon");
-		myTestClient.setName("Verónica");
-		myTestClient.setYearBirth(1978);
-		myTestClient.setAddress("Avenida de la Gloria");
-		myTestClient.setEmail("galadriel@gmail.com");
-		myTestClient.setTphno("999665577");
-		
-		potentialClientServiceI.addPotentialClient(myTestClient);
+//		//Añadir un cliente potencial
+//		PotentialClient myTestClient = new PotentialClient();
+//		myTestClient.setNif("8888B");
+//		myTestClient.setSurname("Barasona Leon");
+//		myTestClient.setName("Verónica");
+//		myTestClient.setYearBirth(1978);
+//		myTestClient.setAddress("Avenida de la Gloria");
+//		myTestClient.setEmail("galadriel@gmail.com");
+//		myTestClient.setTphno("999665577");
+//		
+//		potentialClientServiceI.addPotentialClient(myTestClient);
 		
 	}
 

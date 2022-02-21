@@ -55,4 +55,9 @@ public class AccountServiceImpl implements AccountServiceI {
 		return accRepository.findByNumAccountContaining(numAccount);
 	}
 
+	@Override
+	public void removeAccountRegs(long IdAccount) {
+		accRepository.removeAccountRegs(IdAccount);
+	}
+
 }
