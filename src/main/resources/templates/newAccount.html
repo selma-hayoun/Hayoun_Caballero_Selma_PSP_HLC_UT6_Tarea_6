@@ -10,7 +10,7 @@
 		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">Datos Nueva Cuenta</div>
 		  <div class="card-body">
-				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST">
+				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST">				
 					<div class="form-group">
 			  			<label for="inpAccountRegs">Número de cuenta</label>
 			  			<input type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
@@ -22,7 +22,18 @@
 					<div class="form-group">
 						  <label for="inpAccountBalance">Balance</label>
 						  <input type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance inicial ... (Opcional)">
-					</div>										
+					</div>
+					<!--
+						<div class="form-group">
+						<label for="inpAccountOwners">Clientes asociados</label>
+						<select name="inpAccountOwners" id="owners" th:field="*{clients}" size="5" multiple="multiple">
+							<option th:each="client : ${myPClients}"
+									th:value="${{client.id}}"
+									th:text="${client.nif}">
+							</option>
+						</select>
+					</div>
+					-->											
 					<button type="submit" name="btnAddAccount" class="btn btn-success">Añadir</button>
 					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>

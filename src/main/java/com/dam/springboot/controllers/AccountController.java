@@ -20,14 +20,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dam.springboot.entities.Account;
+import com.dam.springboot.entities.Operation;
 import com.dam.springboot.models.AccountModel;
 import com.dam.springboot.services.AccountServiceI;
+import com.dam.springboot.services.OperationServiceI;
 
 @Controller
 public class AccountController {
 
 	@Autowired
 	private AccountServiceI accServiceI;
+	
+	@Autowired
+	private OperationServiceI opServiceI;
 	
 //	@RequestMapping("/home")
 //	@ResponseBody
@@ -144,6 +149,16 @@ public class AccountController {
 			accServiceI.updateAccount(account);
 		}
 		return "redirect:showAccountsView";
+	}
+	
+	@PostMapping("/actOperationsAccount")
+	public String showOperationsAccount(@RequestParam String accId, Model model) {
+		List<Operation> myOps = opServiceI.findOperationsByAccountId(Long.valueOf(accId));
+		// Carga de datos al modelo
+		model.addAttribute("opListView", myOps);
+		model.addAttribute("btnDropOpEnabled", Boolean.FALSE);
+		
+		return "showOperations";
 	}
 	
 }

@@ -63,6 +63,18 @@ public class PotentialClientController {
 		//A otro método de la vista
 	}
 	
+	@PostMapping("/actAccountsPClient")
+	public String showAccountsPotentialClient(@RequestParam String pClientId, Model model) {
+		List<Long> accountsId = pClientServiceI.findAccountsIdById(Long.valueOf(pClientId));		
+		List<Account> clientAccounts = accServiceI.findAccountsById(accountsId);
+		
+		// Carga de datos al modelo
+		model.addAttribute("accListView", clientAccounts);
+		model.addAttribute("btnDropAccountEnabled", Boolean.FALSE);
+		
+		return "showAccounts";
+	}
+	
 
 	@PostMapping("/actSearchClient")
 	public String submitSearchClientForm(@ModelAttribute PotentialClient searchedClient, Model model) throws Exception {

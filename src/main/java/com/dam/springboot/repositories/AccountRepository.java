@@ -16,8 +16,8 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	
 	List<Account> findByNumAccountContaining(String numAccount);
 	
-	@Query(value = "DELETE FROM client_account c WHERE c.account_id = :id",
-			nativeQuery = true)
-	void removeAccountRegs(@Param("id") Long id);
+//	@Query(value = "DELETE FROM client_account c WHERE c.account_id = :id",
+//			nativeQuery = true)
+//	void removeAccountRegs(@Param("id") Long id);
  	
 }

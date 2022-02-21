@@ -59,9 +59,9 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 		return potentialClientRepository.getById(id);
 	}
 
-	@Override
-	public void removePotentialClientRegs(long IdPotentialClient) {
-		potentialClientRepository.removePotentialClientRegs(IdPotentialClient);
-	}
+//	@Override
+//	public void removePotentialClientRegs(long IdPotentialClient) {
+//		potentialClientRepository.removePotentialClientRegs(IdPotentialClient);
+//	}
 
 }

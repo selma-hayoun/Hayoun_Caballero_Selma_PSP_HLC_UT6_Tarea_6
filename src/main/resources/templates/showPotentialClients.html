@@ -29,6 +29,7 @@
 							<th scope="col">Dirección</th>
 							<th scope="col">Email</th>
 							<th scope="col">Teléfono</th>
+							<th scope="col" th:hidden="${btnAccountsPClientEnabled}">Cuentas</th>
 							<th scope="col" th:hidden="${btnDropPClientEnabled}">Eliminar</th>
 						</tr>
 					</thead>
@@ -50,6 +51,13 @@
 								<td scope="row" th:text="${client.address}" />
 								<td scope="row" th:text="${client.email}" />
 								<td scope="row" th:text="${client.tphno}" />
+								<td scope="row" th:hidden="${btnAccountsPClientEnabled}">
+									<form action="actAccountsPClient" method="post">
+										<button th:disabled="${btnAccountsPClientEnabled}" type="submit"
+											id="btnAccountsPClient" name="pClientId" th:value="${client.id}"
+											class="btn btn-info"><i class="fa-solid fa-clipboard-list"></i></button>
+									</form>
+								</td>
 								<td scope="row" th:hidden="${btnDropPClientEnabled}">
 									<form action="actDropPClient" method="post">
 										<button th:disabled="${btnDropPClientEnabled}" type="submit"

@@ -18,7 +18,7 @@ public interface PotentialClientServiceI {
 	
 	public void addPotentialClient(PotentialClient c);
 	
-	public void removePotentialClientRegs(long IdPotentialClient);
+//	public void removePotentialClientRegs(long IdPotentialClient);
 	
 	public void removePotentialClientById(long IdPotentialClient);
 	

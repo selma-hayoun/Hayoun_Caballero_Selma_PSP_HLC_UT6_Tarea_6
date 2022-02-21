@@ -1,5 +1,7 @@
 package com.dam.springboot.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dam.springboot.entities.PotentialClient;
 import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
@@ -61,6 +64,8 @@ public class SystemController {
 	//Redirecciona a vista de añadir cuentas
 	@GetMapping("/newAccountView")
 	public String showNewAccountForm() {
+//	public String showNewAccountForm(Model model) {
+//		model.addAttribute("myPClients", pClientServiceI.findAllPotentialClient());
 		return "newAccount";
 	}
 	
@@ -78,9 +83,9 @@ public class SystemController {
 	}
 	
 	//Para operar
-	@GetMapping("/operationView")
-	public String redirectToNewCarTemplate() {
-		return "index";
+	@GetMapping("/operationsView")
+	public String redirectToOperationsController() {
+		return "redirect:showOperationsView";
 	}
 
 }

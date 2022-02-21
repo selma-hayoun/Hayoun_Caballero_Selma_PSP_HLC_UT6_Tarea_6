@@ -34,4 +34,14 @@ public class OperationServiceImpl implements OperationServiceI{
 		opRepository.save(op);		
 	}
 
+	@Override
+	public List<Operation> findOperationsById(List<Long> opIds) {
+		return opRepository.findAllById(opIds);
+	}
+
+	@Override
+	public List<Operation> findOperationsByAccountId(Long id) {
+		return opRepository.findOperationsByAccountId(id);
+	}
+
 }

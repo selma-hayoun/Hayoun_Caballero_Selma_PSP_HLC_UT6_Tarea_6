@@ -23,15 +23,15 @@ INSERT INTO client_account(potentialclient_id, account_id) VALUES (4, 4);
 INSERT INTO client_account(potentialclient_id, account_id) VALUES (6, 4);
 
 /*TABLA OPERACIONES - OPERATION*/
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (1, 500, '2021-12-01', 0, 1);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (2, 500, '2021-12-02', 1, 2);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (3, 1000, '2021-12-03', 2, 2);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (4, 1000, '2021-12-03', 3, 3);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (5, 125, '2021-12-04', 0, 3);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (6, 1250, '2021-12-05', 0, 2);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (7, 2500, '2021-12-06', 2, 4);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (8, 2500, '2021-12-06', 3, 1);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (9, 1750, '2021-12-07', 0, 4);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (10, 500, '2021-12-08', 1, 4);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (11, 50, '2021-12-09', 1, 3);
-INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (12, 750, '2021-12-10', 1, 2);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (1, 500, '2021-12-01', 'DEPOSIT', 1);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (2, 500, '2021-12-02', 'WITHDRAWAL', 2);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (3, 1000, '2021-12-03', 'ISSUED_TRANSFER', 2);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (4, 1000, '2021-12-03', 'RECEIVED_TRANSFER', 3);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (5, 125, '2021-12-04', 'DEPOSIT', 3);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (6, 1250, '2021-12-05', 'DEPOSIT', 2);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (7, 2500, '2021-12-06', 'ISSUED_TRANSFER', 4);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (8, 2500, '2021-12-06', 'RECEIVED_TRANSFER', 1);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (9, 1750, '2021-12-07', 'DEPOSIT', 4);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (10, 500, '2021-12-08', 'WITHDRAWAL', 4);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (11, 50, '2021-12-09', 'WITHDRAWAL', 3);
+INSERT INTO operaciones(id, cantidad, fecha_operacion, operacion, account_id) VALUES (12, 750, '2021-12-10', 'WITHDRAWAL', 2);

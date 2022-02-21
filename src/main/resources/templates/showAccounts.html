@@ -25,6 +25,7 @@
 							<th scope="col">Número de cuenta</th>
 							<th scope="col">Fecha de creación</th>
 							<th scope="col">Balance</th>
+							<th scope="col" th:hidden="${btnOperationsAccountEnabled}">Operaciones</th>
 							<th scope="col" th:hidden="${btnDropAccountEnabled}">Eliminar</th>
 						</tr>
 					</thead>
@@ -42,6 +43,13 @@
 								<td scope="row" th:text="${acc.numAccount}" />
 								<td scope="row" th:text="${acc.createAt}" />
 								<td scope="row" th:text="${acc.balance}" />
+								<td scope="row" th:hidden="${btnOperationsAccountEnabled}">
+									<form action="actOperationsAccount" method="post">
+										<button th:disabled="${btnOperationsAccountEnabled}" type="submit"
+											id="btnOperationsAccount" name="accId" th:value="${acc.id}"
+											class="btn btn-info"><i class="fa-solid fa-clipboard-list"></i></button>
+									</form>
+								</td>
 								<td scope="row" th:hidden="${btnDropAccountEnabled}">
 									<form action="actDropAccount" method="post">
 										<button th:disabled="${btnDropAccountEnabled}" type="submit"

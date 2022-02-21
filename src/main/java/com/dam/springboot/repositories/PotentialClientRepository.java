@@ -21,8 +21,8 @@ public interface PotentialClientRepository extends JpaRepository<PotentialClient
 			nativeQuery = true)
 	List<Long> findAccountsIdById(@Param("id") Long id);
 	
-	@Query(value = "DELETE FROM client_account c WHERE c.potentialclient_id = :id",
-			nativeQuery = true)
-	void removePotentialClientRegs(@Param("id") Long id);
+//	@Query(value = "DELETE FROM client_account c WHERE c.potentialclient_id = :id",
+//			nativeQuery = true)
+//	void removePotentialClientRegs(@Param("id") Long id);
 	
 }
