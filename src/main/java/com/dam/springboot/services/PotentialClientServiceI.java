@@ -2,6 +2,7 @@ package com.dam.springboot.services;
 
 import java.util.List;
 
+import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.PotentialClient;
 
 public interface PotentialClientServiceI {
@@ -25,5 +26,7 @@ public interface PotentialClientServiceI {
 	public void updatePotentialClient(PotentialClient c);	
 	
 	public List<Long> findAccountsIdById(Long id);
+	
+	public List<PotentialClient> findPotentialClientsById(List<Long> cIds);
 	
 }

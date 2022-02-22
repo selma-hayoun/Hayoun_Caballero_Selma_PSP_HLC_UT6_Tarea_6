@@ -26,6 +26,15 @@
 						  <label for="inpAccountBalance">Balance</label>
 						  <input th:value="${myAcc.balance}" required="required" type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance actualizado ...">
 					</div>
+					<div class="form-group">
+						<label for="inpAccountOwners">Clientes de Issaries</label>
+						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple">
+							<option th:each="client : ${myPClients}"
+									th:value="${{client.id}}"
+									th:text="${client.nif}">
+							</option>
+						</select>
+					</div>
 					<button type="submit" name="btnUpdateAccount" class="btn btn-success">Actualizar</button>
 					<a class="btn btn-primary" href="showAccountView" role="button" id="aBtnReturn">Volver</a>
 				</form>

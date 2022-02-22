@@ -63,9 +63,9 @@ public class SystemController {
 	
 	//Redirecciona a vista de añadir cuentas
 	@GetMapping("/newAccountView")
-	public String showNewAccountForm() {
-//	public String showNewAccountForm(Model model) {
-//		model.addAttribute("myPClients", pClientServiceI.findAllPotentialClient());
+//	public String showNewAccountForm() {
+	public String showNewAccountForm(Model model) {
+		model.addAttribute("myPClients", pClientServiceI.findAllPotentialClient());
 		return "newAccount";
 	}
 	
@@ -73,6 +73,8 @@ public class SystemController {
 	@PostMapping("/updateAccountView")
 	public String updateAccountForm(@RequestParam Long accId, Model model) {
 		model.addAttribute("myAcc", accountServiceI.getById(accId));
+//		model.addAttribute("pClients", pClientServiceI.findAllPotentialClient());
+		model.addAttribute("myPClients", pClientServiceI.findPotentialClientsById(accountServiceI.findPotentialClientsIdById(accId)));
 		return "updateAccount";
 	}
 	

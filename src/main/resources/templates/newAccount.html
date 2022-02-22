@@ -23,17 +23,15 @@
 						  <label for="inpAccountBalance">Balance</label>
 						  <input type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance inicial ... (Opcional)">
 					</div>
-					<!--
-						<div class="form-group">
+					<div class="form-group">
 						<label for="inpAccountOwners">Clientes asociados</label>
-						<select name="inpAccountOwners" id="owners" th:field="*{clients}" size="5" multiple="multiple">
+						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple">
 							<option th:each="client : ${myPClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>
 						</select>
-					</div>
-					-->											
+					</div>									
 					<button type="submit" name="btnAddAccount" class="btn btn-success">Añadir</button>
 					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>

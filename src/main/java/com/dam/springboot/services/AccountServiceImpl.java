@@ -55,6 +55,21 @@ public class AccountServiceImpl implements AccountServiceI {
 		return accRepository.findByNumAccountContaining(numAccount);
 	}
 
+	@Override
+	public void addClientAccountReg(Long idClient, Long idAccount) {
+		accRepository.addClientAccountReg(idClient, idAccount);	
+	}
+
+	@Override
+	public List<Long> findPotentialClientsIdById(Long id) {
+		return accRepository.findPotentialClientsIdById(id);
+	}
+
+	@Override
+	public void deleteClientAccountReg(Long id) {
+		accRepository.deleteClientAccountReg(id);		
+	}
+
 //	@Override
 //	public void removeAccountRegs(long IdAccount) {
 //		accRepository.removeAccountRegs(IdAccount);
