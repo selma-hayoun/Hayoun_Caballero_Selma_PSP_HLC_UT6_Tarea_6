@@ -112,5 +112,14 @@ public class SystemController {
 		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
 		return "newWithdrawal";
 	}
+	
+	//Redirecciona a la vista de transferencias
+		@PostMapping("/newTransferView")
+		public String newTransferForm(@RequestParam Long pClientId, Model model) {
+			model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
+			model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
+			model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
+			return "newTransfer";
+		}
 
 }

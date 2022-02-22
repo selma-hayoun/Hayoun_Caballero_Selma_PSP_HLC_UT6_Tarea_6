@@ -9,10 +9,13 @@ public class OperationModel {
 	@Getter @Setter private String amount;
 	
 	@Getter @Setter private Long accountId;
+	
+	@Getter @Setter private Long accountIdTo;
 
 	@Override
 	public String toString() {
-		return "OperationModel [id=" + id + ", amount=" + amount + ", accountId=" + accountId + "]";
+		return "OperationModel [id=" + id + ", amount=" + amount + ", accountId=" + accountId + ", accountIdTo="
+				+ accountIdTo + "]";
 	}
 
 }

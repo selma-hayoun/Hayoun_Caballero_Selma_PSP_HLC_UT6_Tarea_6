@@ -32,5 +32,7 @@ public interface AccountServiceI {
 	public List<Long> findPotentialClientsIdById(@Param("id") Long id);
 	
 	public Integer countOrphanAccounts(Long id);
+	
+	public List<Account> findAccountsIdNotOwnedById(List<Long> idList);
 
 }

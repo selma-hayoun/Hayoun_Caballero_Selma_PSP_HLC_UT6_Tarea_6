@@ -150,4 +150,72 @@ public class OperationController {
 		}
 		return "redirect:newDepositWithdrawalView";
 	}
+	
+	@PostMapping("/actTransfer")
+	private String addTransfer(@Valid @ModelAttribute OperationModel newOpModel, BindingResult result) throws Exception {
+		if (result.hasErrors()) {
+			throw new Exception("Parámetros de alta erróneos");			
+		} else {
+			//Lo primero de todo es comprobar que tiene saldo
+			//Si no lo tuviera cancelamos la operación
+			double amount;
+			try {
+				amount = Double.parseDouble(newOpModel.getAmount());
+			} catch (Exception e) {
+				amount = 0;
+			}
+			
+			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
+				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
+			} else {
+				Operation newOpOrigin = new Operation();	
+				Operation newOpDestiny = new Operation();
+				
+				// Creating the LocalDatetime object
+				LocalDate currentLocalDate = LocalDate.now();		
+				// Getting system timezone
+				ZoneId systemTimeZone = ZoneId.systemDefault();		
+				// converting LocalDateTime to ZonedDateTime with the system timezone
+				ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
+				// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
+				Date utilDate = Date.from(zonedDateTime.toInstant());
+				
+				// Seteamos la fecha actual
+				newOpOrigin.setCreateAt(utilDate);
+				newOpDestiny.setCreateAt(utilDate);
+				
+				//Seteamos el tipo de operación
+				newOpOrigin.setOp(OperationType.ISSUED_TRANSFER);	
+				newOpDestiny.setOp(OperationType.RECEIVED_TRANSFER);
+				
+				//Seteamos la cantidad
+				newOpOrigin.setAmount(amount);
+				newOpDestiny.setAmount(amount);
+				
+				//Seteamos el id de la cuenta
+				newOpOrigin.setAccount_id(newOpModel.getAccountId());
+				newOpDestiny.setAccount_id(newOpModel.getAccountIdTo());
+				
+				System.out.println("Operacion de origen: " + newOpOrigin.toString());
+				System.out.println("Operacion de destino: " + newOpOrigin.toString());
+				System.out.println("Operacion recibida del modelo: " + newOpModel.toString());
+				
+				// Se añade la nueva operación
+				opServiceI.addOperation(newOpOrigin);	
+				opServiceI.addOperation(newOpDestiny);	
+				
+				//Se actualiza el balance de la cuenta origen
+				Account acc = accServiceI.getById(newOpModel.getAccountId());
+				acc.setBalance(acc.getBalance() - newOpOrigin.getAmount());
+				accServiceI.updateAccount(acc);		
+				
+				//Y la cuenta de destino
+				Account accTo = accServiceI.getById(newOpModel.getAccountIdTo());
+				accTo.setBalance(accTo.getBalance() + newOpOrigin.getAmount());
+				accServiceI.updateAccount(accTo);	
+			}		
+						
+		}
+		return "redirect:newDepositWithdrawalView";
+	}
 }

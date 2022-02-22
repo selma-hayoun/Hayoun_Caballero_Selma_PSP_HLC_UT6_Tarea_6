@@ -11,8 +11,7 @@
 	<body class="card-body">
 		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
 		    <a class="navbar-brand" th:href="@{/operationsView}" role="button">LISTADO</a>
-		    <a class="navbar-brand" th:href="@{/newDepositWithdrawalView}" role="button">DEPÓSITOS/RETIRADAS</a>
-			<a class="navbar-brand" th:href="@{/newTransferView}" role="button">TRANSFERENCIAS</a>
+		    <a class="navbar-brand" th:href="@{/newDepositWithdrawalView}" role="button">OPERAR</a>
 		</nav>
 		<div class="card text-white bg-dark mb-3">
 		  	<div class="card-header">Seleccione el cliente y operación a realizar</div>
@@ -26,6 +25,7 @@
 							<th scope="col">Apellidos</th>
 							<th scope="col" th:hidden="${btnDepositEnabled}">Ingreso</th>
 							<th scope="col" th:hidden="${btnWithdrawalEnabled}">Retirada</th>
+							<th scope="col" th:hidden="${btnTransferEnabled}">Transferencia</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,6 +47,13 @@
 										<button th:disabled="${btnWithdrawalEnabled}" type="submit"
 											id="btnWithdrawal" name="pClientId" th:value="${client.id}"
 											class="btn btn-danger"><i class="fa-solid fa-hand-holding-dollar"></i></button>
+									</form>
+								</td>
+								<td scope="row" th:hidden="${btnTransferEnabled}">
+									<form action="newTransferView" method="post">
+										<button th:disabled="${btnTransferEnabled}" type="submit"
+											id="btnTransfer" name="pClientId" th:value="${client.id}"
+											class="btn btn-danger"><i class="fa-solid fa-right-left"></i></button>
 									</form>
 								</td>
 							</tr>

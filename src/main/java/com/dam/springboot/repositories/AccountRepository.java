@@ -33,6 +33,10 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 			nativeQuery = true)
 	List<Long> findPotentialClientsIdById(@Param("id") Long id);
 	
+	@Query(value = "SELECT * FROM cuentas c WHERE c.id NOT IN(:idList)",
+			nativeQuery = true)
+	List<Account> findAccountsIdNotOwnedById(@Param("idList") List<Long> idList);
+	
 	@Modifying
 	@Query(value = "DELETE FROM client_account WHERE account_id = :id",
 	nativeQuery = true)

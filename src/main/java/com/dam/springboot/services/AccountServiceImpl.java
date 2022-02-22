@@ -75,6 +75,12 @@ public class AccountServiceImpl implements AccountServiceI {
 		return accRepository.countOrphanAccounts(id);
 	}
 
+	@Override
+	public List<Account> findAccountsIdNotOwnedById(List<Long> idList) {
+		return accRepository.findAccountsIdNotOwnedById(idList);
+	}
+
+
 //	@Override
 //	public void removeAccountRegs(long IdAccount) {
 //		accRepository.removeAccountRegs(IdAccount);
