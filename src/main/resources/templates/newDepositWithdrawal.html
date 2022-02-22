@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>ISSARIES</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+	</head>
+	<body class="card-body">
+		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		    <a class="navbar-brand" th:href="@{/operationsView}" role="button">LISTADO</a>
+		    <a class="navbar-brand" th:href="@{/newDepositWithdrawalView}" role="button">DEPÓSITOS/RETIRADAS</a>
+			<a class="navbar-brand" th:href="@{/newTransferView}" role="button">TRANSFERENCIAS</a>
+		</nav>
+		<div class="card text-white bg-dark mb-3">
+		  	<div class="card-header">Seleccione el cliente que realiza la operación</div>
+			<div class="card-body">
+				<table class="table table-striped table-dark">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">ID del cliente</th>
+							<th scope="col">NIF</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellidos</th>
+							<th scope="col" th:hidden="${btnDepositEnabled}">Ingreso</th>
+							<th scope="col" th:hidden="${btnWithdrawalEnabled}">Retirada</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="client : ${pClientsListView}">
+							<tr>
+								<td scope="row" th:text="${client.id}" />
+								<td scope="row" th:text="${client.nif}" />
+								<td scope="row" th:text="${client.name}" />
+								<td scope="row" th:text="${client.surname}" />
+								<td scope="row" th:hidden="${btnDepositEnabled}">
+									<form action="actDeposit" method="post">
+										<button th:disabled="${btnDepositEnabled}" type="submit"
+											id="btnDeposit" name="pClientId" th:value="${client.id}"
+											class="btn btn-info"><i class="fa-solid fa-circle-dollar-to-slot"></i></button>
+									</form>
+								</td>
+								<td scope="row" th:hidden="${btnWithdrawalEnabled}">
+									<form action="actWithdrawal" method="post">
+										<button th:disabled="${btnWithdrawalEnabled}" type="submit"
+											id="btnWithdrawal" name="pClientId" th:value="${client.id}"
+											class="btn btn-danger"><i class="fa-solid fa-hand-holding-dollar"></i></button>
+									</form>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+				<a class="btn btn-info" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+			</div>
+		</div>
+	</body>
+</html>

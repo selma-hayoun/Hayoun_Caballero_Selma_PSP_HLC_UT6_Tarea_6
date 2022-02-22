@@ -38,5 +38,9 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	nativeQuery = true)
 	@Transactional
 	void deleteClientAccountReg(@Param("id") Long id);
+	
+	@Query(value = "SELECT COUNT(*) FROM client_account a WHERE a.account_id = :id",
+			nativeQuery = true)
+	Integer countOrphanAccounts(@Param("id") Long id);
 	 	
 	}

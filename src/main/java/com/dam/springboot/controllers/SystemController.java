@@ -84,7 +84,7 @@ public class SystemController {
 		return "searchAccountBy";
 	}
 	
-	//Para operar
+	//Para visualizar operaciones
 	@GetMapping("/operationsView")
 	public String redirectToOperationsController() {
 		return "redirect:showOperationsView";

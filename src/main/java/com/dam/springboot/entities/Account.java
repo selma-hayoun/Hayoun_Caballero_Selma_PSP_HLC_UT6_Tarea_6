@@ -71,10 +71,10 @@ public class Account implements Serializable {
 //        b.getMyAccounts().add(this);
 //    }
 
-    public void removeOwner(PotentialClient b) {
-    	myOwners.remove(b);
-        b.getMyAccounts().remove(this);
-    } 
+//    public void removeOwner(PotentialClient b) {
+//    	myOwners.remove(b);
+//        b.getMyAccounts().remove(this);
+//    } 
 	
 //	@PrePersist
 //	void createAt() {

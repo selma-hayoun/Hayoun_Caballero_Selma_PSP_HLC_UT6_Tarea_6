@@ -70,6 +70,11 @@ public class AccountServiceImpl implements AccountServiceI {
 		accRepository.deleteClientAccountReg(id);		
 	}
 
+	@Override
+	public Integer countOrphanAccounts(Long id) {
+		return accRepository.countOrphanAccounts(id);
+	}
+
 //	@Override
 //	public void removeAccountRegs(long IdAccount) {
 //		accRepository.removeAccountRegs(IdAccount);

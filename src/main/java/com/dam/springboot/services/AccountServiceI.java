@@ -30,5 +30,7 @@ public interface AccountServiceI {
 	public void deleteClientAccountReg(@Param("id") Long id);
 	
 	public List<Long> findPotentialClientsIdById(@Param("id") Long id);
+	
+	public Integer countOrphanAccounts(Long id);
 
 }

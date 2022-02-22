@@ -53,11 +53,24 @@ public class PotentialClientController {
 	
 	@PostMapping("/actDropPClient")
 	public String removePotentialClient(@RequestParam String pClientId, Model model) {
+		//Sacamos la situación actual de cuentas del cliente
+		List<Long> accountsId = pClientServiceI.findAccountsIdById(Long.valueOf(pClientId));		
+		List<Account> clientAccounts = accServiceI.findAccountsById(accountsId);
+		
 		// Eliminamos sus registros de la tabla N:M		
-//		pClientServiceI.removePotentialClientRegs(Long.valueOf(pClientId));
+		pClientServiceI.deleteClientAccountReg(Long.valueOf(pClientId));
 		
 		// Eliminación de Cliente Potencial
 		pClientServiceI.removePotentialClientById(Long.valueOf(pClientId));
+		
+		//Debemos que buscar las cuentas huérfanas y eliminarlas
+		//Estarán en la tabla de Accounts pero no en la N:M		
+		
+		for(Account acc : clientAccounts) {
+			if(accServiceI.countOrphanAccounts(acc.getId()) == 0) {
+				accServiceI.removeAccountById(acc.getId());
+			}
+		}
 		
 		return "redirect:showPotentialClientsView";//Redirigiendo dentro de un método del controlador 
 		//A otro método de la vista

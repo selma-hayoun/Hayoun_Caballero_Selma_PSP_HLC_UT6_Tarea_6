@@ -66,7 +66,7 @@ public class PotentialClient implements Serializable {
 	@Getter @Setter private String tphno;
 	
 //	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "myOwners")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "myOwners")
 //	@JoinTable(name = "client_account",
 //    	joinColumns = @JoinColumn(name = "potentialclient_id"),
 //    	inverseJoinColumns = @JoinColumn(name = "account_id"))

@@ -2,6 +2,8 @@ package com.dam.springboot.services;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.PotentialClient;
 
@@ -28,5 +30,7 @@ public interface PotentialClientServiceI {
 	public List<Long> findAccountsIdById(Long id);
 	
 	public List<PotentialClient> findPotentialClientsById(List<Long> cIds);
+	
+	public void deleteClientAccountReg(Long id);
 	
 }

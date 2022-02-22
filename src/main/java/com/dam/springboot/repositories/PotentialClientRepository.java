@@ -2,7 +2,10 @@ package com.dam.springboot.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -24,5 +27,11 @@ public interface PotentialClientRepository extends JpaRepository<PotentialClient
 //	@Query(value = "DELETE FROM client_account c WHERE c.potentialclient_id = :id",
 //			nativeQuery = true)
 //	void removePotentialClientRegs(@Param("id") Long id);
+	
+	@Modifying
+	@Query(value = "DELETE FROM client_account WHERE potentialclient_id = :id",
+	nativeQuery = true)
+	@Transactional
+	void deleteClientAccountReg(@Param("id") Long id);
 	
 }
