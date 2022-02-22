@@ -44,6 +44,8 @@ public class Operation implements Serializable {
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "Cantidad")
 	@Getter @Setter private double amount = 0;
+	
+	@Getter @Setter private Long account_id;
 
 	@Override
 	public String toString() {

@@ -33,4 +33,6 @@ public interface PotentialClientServiceI {
 	
 	public void deleteClientAccountReg(Long id);
 	
+	public List<Long> findPotentialClientsOwnersId();
+	
 }

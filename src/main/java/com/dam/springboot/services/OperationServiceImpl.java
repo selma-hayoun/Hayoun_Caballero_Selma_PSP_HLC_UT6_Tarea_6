@@ -20,17 +20,17 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	@Override
-	public void addAccount(Operation op) {
+	public void addOperation(Operation op) {
 		opRepository.save(op);		
 	}
 
 	@Override
-	public void removeAccountById(long IdOperation) {
+	public void removeOperationById(long IdOperation) {
 		opRepository.deleteById(IdOperation);		
 	}
 
 	@Override
-	public void updateAccount(Operation op) {
+	public void updateOperation(Operation op) {
 		opRepository.save(op);		
 	}
 

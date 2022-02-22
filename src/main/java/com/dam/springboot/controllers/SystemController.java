@@ -89,5 +89,28 @@ public class SystemController {
 	public String redirectToOperationsController() {
 		return "redirect:showOperationsView";
 	}
+	
+	//Redirecciona a lista de clientes para depósitos y retiradas
+	@GetMapping("/newDepositWithdrawalView")
+	public String showNewOperationForm(Model model) {
+		model.addAttribute("pClientsOwners", pClientServiceI.findPotentialClientsById(pClientServiceI.findPotentialClientsOwnersId()));
+		return "newDepositWithdrawal";
+	}
+	
+	//Redirecciona a la vista de depósitos
+	@PostMapping("/newDepositView")
+	public String newDepositForm(@RequestParam Long pClientId, Model model) {
+		model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
+		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
+		return "newDeposit";
+	}
+	
+	//Redirecciona a la vista de retiradas
+	@PostMapping("/newWithdrawalView")
+	public String newWithdrawalForm(@RequestParam Long pClientId, Model model) {
+		model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
+		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
+		return "newWithdrawal";
+	}
 
 }

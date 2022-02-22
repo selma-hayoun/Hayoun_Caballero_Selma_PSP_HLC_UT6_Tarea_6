@@ -69,6 +69,11 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 		potentialClientRepository.deleteClientAccountReg(id);		
 	}
 
+	@Override
+	public List<Long> findPotentialClientsOwnersId() {
+		return potentialClientRepository.findPotentialClientsOwnersId();
+	}
+
 //	@Override
 //	public void removePotentialClientRegs(long IdPotentialClient) {
 //		potentialClientRepository.removePotentialClientRegs(IdPotentialClient);

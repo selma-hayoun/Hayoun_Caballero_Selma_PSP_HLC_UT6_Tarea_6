@@ -13,11 +13,11 @@ public interface OperationServiceI {
 	
 	public List<Operation> findOperationsById(List<Long> opIds);	
 	
-	public void addAccount(Operation op);
+	public void addOperation(Operation op);
 	
-	public void removeAccountById(long IdOperation);
+	public void removeOperationById(long IdOperation);
 	
-	public void updateAccount(Operation op);	
+	public void updateOperation(Operation op);	
 	
 	public List<Operation> findOperationsByAccountId(Long id);
 }
