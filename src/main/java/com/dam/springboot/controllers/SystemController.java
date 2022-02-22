@@ -73,7 +73,7 @@ public class SystemController {
 	@PostMapping("/updateAccountView")
 	public String updateAccountForm(@RequestParam Long accId, Model model) {
 		model.addAttribute("myAcc", accountServiceI.getById(accId));
-//		model.addAttribute("pClients", pClientServiceI.findAllPotentialClient());
+		model.addAttribute("pClients", pClientServiceI.findAllPotentialClient());
 		model.addAttribute("myPClients", pClientServiceI.findPotentialClientsById(accountServiceI.findPotentialClientsIdById(accId)));
 		return "updateAccount";
 	}

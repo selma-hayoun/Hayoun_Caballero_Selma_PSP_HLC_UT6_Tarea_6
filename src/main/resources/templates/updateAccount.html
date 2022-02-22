@@ -27,9 +27,15 @@
 						  <input th:value="${myAcc.balance}" required="required" type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance actualizado ...">
 					</div>
 					<div class="form-group">
-						<label for="inpAccountOwners">Clientes de Issaries</label>
-						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple">
-							<option th:each="client : ${myPClients}"
+						<label for="inpAccountOwners">Clientes asociados</label>
+						<ul th:each="accClient : ${myPClients}">
+							<li th:text="${accClient.nif}"/>
+						</ul>
+					</div>
+					<div class="form-group">
+						<label for="inpPotentialClients">Clientes de Issaries</label>
+						<select class="form-control" name="myOwners" id="inpPotentialClients" size="5" multiple="multiple">
+							<option th:each="client : ${pClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>

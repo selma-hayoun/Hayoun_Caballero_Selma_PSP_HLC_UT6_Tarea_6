@@ -34,7 +34,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	List<Long> findPotentialClientsIdById(@Param("id") Long id);
 	
 	@Modifying
-	@Query(value = "DELETE FROM client_account ca WHERE ca.account_id :id",
+	@Query(value = "DELETE FROM client_account WHERE account_id = :id",
 	nativeQuery = true)
 	@Transactional
 	void deleteClientAccountReg(@Param("id") Long id);
