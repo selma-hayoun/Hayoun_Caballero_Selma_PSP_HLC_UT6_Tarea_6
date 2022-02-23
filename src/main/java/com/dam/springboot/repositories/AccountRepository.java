@@ -18,11 +18,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	Account getByNumAccount(String numAccount);
 	
 	List<Account> findByNumAccountContaining(String numAccount);
-	
-//	@Query(value = "DELETE FROM client_account c WHERE c.account_id = :id",
-//			nativeQuery = true)
-//	void removeAccountRegs(@Param("id") Long id);
-	
+		
 	@Modifying
 	@Query(value = "INSERT INTO client_account(potentialclient_id, account_id) VALUES ( :idClient, :idAccount)",
 	nativeQuery = true)
@@ -47,4 +43,4 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 			nativeQuery = true)
 	Integer countOrphanAccounts(@Param("id") Long id);
 	 	
-	}
+}

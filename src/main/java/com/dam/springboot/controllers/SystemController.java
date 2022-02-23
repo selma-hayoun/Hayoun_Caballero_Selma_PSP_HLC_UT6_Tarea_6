@@ -1,6 +1,5 @@
 package com.dam.springboot.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.dam.springboot.entities.PotentialClient;
 import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
@@ -63,7 +60,6 @@ public class SystemController {
 	
 	//Redirecciona a vista de añadir cuentas
 	@GetMapping("/newAccountView")
-//	public String showNewAccountForm() {
 	public String showNewAccountForm(Model model) {
 		model.addAttribute("myPClients", pClientServiceI.findAllPotentialClient());
 		return "newAccount";
@@ -114,12 +110,12 @@ public class SystemController {
 	}
 	
 	//Redirecciona a la vista de transferencias
-		@PostMapping("/newTransferView")
-		public String newTransferForm(@RequestParam Long pClientId, Model model) {
-			model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
-			model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
-			model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
-			return "newTransfer";
-		}
+	@PostMapping("/newTransferView")
+	public String newTransferForm(@RequestParam Long pClientId, Model model) {
+		model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
+		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
+		model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
+		return "newTransfer";
+	}
 
 }

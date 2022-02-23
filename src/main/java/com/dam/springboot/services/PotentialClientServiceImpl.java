@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.dam.springboot.entities.PotentialClient;
 import com.dam.springboot.repositories.PotentialClientRepository;
 
@@ -73,10 +72,5 @@ public class PotentialClientServiceImpl implements PotentialClientServiceI{
 	public List<Long> findPotentialClientsOwnersId() {
 		return potentialClientRepository.findPotentialClientsOwnersId();
 	}
-
-//	@Override
-//	public void removePotentialClientRegs(long IdPotentialClient) {
-//		potentialClientRepository.removePotentialClientRegs(IdPotentialClient);
-//	}
 
 }

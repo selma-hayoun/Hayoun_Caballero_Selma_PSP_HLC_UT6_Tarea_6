@@ -1,9 +1,5 @@
 package com.dam.springboot.models;
 
-import java.util.Set;
-
-import com.dam.springboot.entities.PotentialClient;
-
 import lombok.Getter;
 import lombok.Setter;
 

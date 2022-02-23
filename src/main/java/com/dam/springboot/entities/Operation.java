@@ -52,6 +52,4 @@ public class Operation implements Serializable {
 		return "Operation [id=" + id + ", op=" + op + ", createAt=" + createAt + ", amount=" + amount + "]";
 	}
 	
-	
-	
 }

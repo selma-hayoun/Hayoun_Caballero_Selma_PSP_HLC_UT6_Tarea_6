@@ -5,7 +5,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -35,11 +34,6 @@ public class AccountController {
 	@Autowired
 	private OperationServiceI opServiceI;
 	
-//	@RequestMapping("/home")
-//	@ResponseBody
-//	public String home() {
-//		return "HOME DE CUENTAS";
-//	}
 	
 	@GetMapping("/showAccountsView")
 	public String showAccounts(Model model) {
@@ -90,16 +84,6 @@ public class AccountController {
 	@PostMapping("/actAddAccount")
 	private String addNewAccount(@Valid @ModelAttribute AccountModel newAccountModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-//			System.out.println(newAccountModel.toString());
-//			// Creating the LocalDatetime object
-//			LocalDate currentLocalDate = LocalDate.now();		
-//			// Getting system timezone
-//			ZoneId systemTimeZone = ZoneId.systemDefault();		
-//			// converting LocalDateTime to ZonedDateTime with the system timezone
-//			ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
-//			// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
-//			Date utilDate = Date.from(zonedDateTime.toInstant());
-//			System.out.println(utilDate.toString());
 			throw new Exception("Parámetros de alta erróneos");
 			
 		} else {

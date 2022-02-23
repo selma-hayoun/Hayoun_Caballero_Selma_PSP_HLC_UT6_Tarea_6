@@ -15,9 +15,7 @@ public interface AccountServiceI {
 	
 	public Account getById(Long id);
 	
-	public void addAccount(Account acc);
-	
-//	public void removeAccountRegs(long IdAccount);
+	public void addAccount(Account acc);	
 	
 	public void removeAccountById(long IdAccount);
 	
@@ -25,11 +23,11 @@ public interface AccountServiceI {
 	
 	public List<Account> findAccountsById(List<Long> accIds);
 	
-	public void addClientAccountReg(@Param("idClient") Long idClient, @Param("idAccount") Long idAccount);
+	public void addClientAccountReg(Long idClient, Long idAccount);
 	
-	public void deleteClientAccountReg(@Param("id") Long id);
+	public void deleteClientAccountReg(Long id);
 	
-	public List<Long> findPotentialClientsIdById(@Param("id") Long id);
+	public List<Long> findPotentialClientsIdById(Long id);
 	
 	public Integer countOrphanAccounts(Long id);
 	

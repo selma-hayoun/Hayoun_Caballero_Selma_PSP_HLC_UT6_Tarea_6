@@ -5,11 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Table;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -65,29 +61,14 @@ public class PotentialClient implements Serializable {
 	@Column(nullable = false)
 	@Getter @Setter private String tphno;
 	
-//	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "myOwners")
-//	@JoinTable(name = "client_account",
-//    	joinColumns = @JoinColumn(name = "potentialclient_id"),
-//    	inverseJoinColumns = @JoinColumn(name = "account_id"))
 	@Getter @Setter private Set<Account> myAccounts;
 	
-//	public void addAccount(Account b) {
-//        myAccounts.add(b);
-//        b.getMyOwners().add(this);
-//    }
-//
-//    public void removeAccount(Account b) {
-//    	myAccounts.remove(b);
-//        b.getMyOwners().remove(this);
-//    } 
 
 	@Override
 	public String toString() {
 		return "PotentialClient [id=" + id + ", nif=" + nif + ", surname=" + surname + ", name=" + name + ", yearBirth="
 				+ yearBirth + ", address=" + address + ", email=" + email + ", tphno=" + tphno + "]";
 	}
-	
-	
 	
 }

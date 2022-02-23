@@ -13,9 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.PotentialClient;
@@ -32,11 +30,6 @@ public class PotentialClientController {
 	@Autowired
 	private AccountServiceI accServiceI;
 	
-//	@RequestMapping("/home")
-//	@ResponseBody
-//	public String home() {
-//		return "HOME DE CLIENTES";
-//	}
 	
 	@GetMapping("/showPotentialClientsView")
 	public String showPotentialClients(Model model) {

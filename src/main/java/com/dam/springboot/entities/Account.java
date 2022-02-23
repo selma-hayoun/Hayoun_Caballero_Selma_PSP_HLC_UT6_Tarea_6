@@ -1,9 +1,6 @@
 package com.dam.springboot.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -21,11 +18,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -55,7 +50,6 @@ public class Account implements Serializable {
 	@Column(name = "Saldo", nullable = false)
 	@Getter @Setter private double balance = 0;//Inicio en 0
 	
-//	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "myAccounts")
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "client_account",
 	joinColumns = @JoinColumn(name = "account_id"),
@@ -66,35 +60,11 @@ public class Account implements Serializable {
 	@JoinColumn(name = "account_id")
 	@Getter @Setter private List<Operation> operations;
 	
-//	public void addOwner(PotentialClient b) {
-//        myOwners.add(b);
-//        b.getMyAccounts().add(this);
-//    }
-
-//    public void removeOwner(PotentialClient b) {
-//    	myOwners.remove(b);
-//        b.getMyAccounts().remove(this);
-//    } 
-	
-//	@PrePersist
-//	void createAt() {
-//		// Creating the LocalDatetime object
-//		LocalDate currentLocalDate = LocalDate.now();		
-//		// Getting system timezone
-//		ZoneId systemTimeZone = ZoneId.systemDefault();		
-//		// converting LocalDateTime to ZonedDateTime with the system timezone
-//		ZonedDateTime zonedDateTime = currentLocalDate.atStartOfDay(systemTimeZone);		
-//		// converting ZonedDateTime to Date using Date.from() and ZonedDateTime.toInstant()
-//		Date utilDate = Date.from(zonedDateTime.toInstant());
-//		this.createAt = utilDate;
-//	}
 
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", numAccount=" + numAccount + ", createAt=" + createAt + ", balance=" + balance
 				+ "]";
 	}	
-	
-	
 
 }
