@@ -10,18 +10,21 @@
 		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">Datos Nuevo Cliente</div>
 		  <div class="card-body">
-				<form th:action="@{/actAddClient}" th:object="${newClient}" method="POST">
+				<form th:action="@{/actAddClient}" th:object="${newClient}" method="POST" class="needs-validation" novalidate>
 					<div class="form-group">
 			  			<label for="inpClientRegs">NIF</label>
 			  			<input type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
+			  			<div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label for="inpClientName">Nombre</label>
 						  <input type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label for="inpClientSurname">Apellidos</label>
 						  <input required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label for="inpClientYearBirth">Año de nacimiento</label>
@@ -34,15 +37,37 @@
 					<div class="form-group">
 						  <label for="inpClientEmail">Email</label>
 						  <input required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label for="inpClientTphno">Teléfono</label>
 						  <input required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<button type="submit" name="btnAddClient" class="btn btn-success">Añadir</button>
 					<a class="btn btn-primary" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+				</script>
 	</body>
 </html>
