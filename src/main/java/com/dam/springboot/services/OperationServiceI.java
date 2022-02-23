@@ -1,6 +1,7 @@
 package com.dam.springboot.services;
 
 import java.util.List;
+
 import com.dam.springboot.entities.Operation;
 
 public interface OperationServiceI {
@@ -16,4 +17,6 @@ public interface OperationServiceI {
 	public void updateOperation(Operation op);	
 	
 	public List<Operation> findOperationsByAccountId(Long id);
+	
+	public List<Operation> findOperationsOrderByDate();
 }

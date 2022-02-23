@@ -10,6 +10,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dam.springboot.entities.Account;
@@ -154,7 +156,10 @@ public class AccountController {
 	}
 	
 	@PostMapping("/actOperationsAccount")
-	public String showOperationsAccount(@RequestParam String accId, Model model) {
+	public String showOperationsAccount(@RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer, @RequestParam String accId, Model model) {
+		if( referrer != null ) {//Sería nulo si entra directamente a esta URL
+		      model.addAttribute("previousUrl", referrer);
+		}
 		List<Operation> myOps = opServiceI.findOperationsByAccountId(Long.valueOf(accId));
 		// Carga de datos al modelo
 		model.addAttribute("opListView", myOps);

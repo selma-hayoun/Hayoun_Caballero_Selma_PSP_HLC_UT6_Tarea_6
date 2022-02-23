@@ -14,4 +14,8 @@ public interface OperationRepository extends JpaRepository<Operation, Long> {
 	@Query(value = "SELECT * FROM operaciones op WHERE op.account_id = :id",
 			nativeQuery = true)
 	List<Operation> findOperationsByAccountId(@Param("id") Long id);
+	
+	@Query(value = "SELECT * FROM operaciones op ORDER BY op.fecha_operacion DESC",
+			nativeQuery = true)
+	List<Operation> findOperationsOrderByDate();
 }

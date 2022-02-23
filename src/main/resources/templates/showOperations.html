@@ -36,7 +36,7 @@
 						</th:block>
 					</tbody>
 				</table>
-				<a class="btn btn-info" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+				<a class="btn btn-info" th:href="${previousUrl != null? previousUrl:'index'}" id="aBtnReturn" role="button">Volver</a>
 			</div>
 		</div>
 	</body>

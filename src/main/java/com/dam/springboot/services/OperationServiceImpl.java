@@ -44,4 +44,9 @@ public class OperationServiceImpl implements OperationServiceI{
 		return opRepository.findOperationsByAccountId(id);
 	}
 
+	@Override
+	public List<Operation> findOperationsOrderByDate() {
+		return opRepository.findOperationsOrderByDate();
+	}
+
 }

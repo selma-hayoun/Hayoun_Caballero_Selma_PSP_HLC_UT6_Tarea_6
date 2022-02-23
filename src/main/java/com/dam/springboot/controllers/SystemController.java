@@ -114,7 +114,9 @@ public class SystemController {
 	public String newTransferForm(@RequestParam Long pClientId, Model model) {
 		model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
 		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
-		model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
+		model.addAttribute("myAccounts", accountServiceI.findAllAccount());
+//		//Listado de las cuentas de las que NO es dueño
+//		model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
 		return "newTransfer";
 	}
 

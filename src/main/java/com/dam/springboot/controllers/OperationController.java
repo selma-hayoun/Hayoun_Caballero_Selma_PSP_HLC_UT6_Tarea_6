@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.dam.springboot.entities.Account;
 import com.dam.springboot.entities.Operation;
 import com.dam.springboot.entities.OperationType;
-import com.dam.springboot.models.AccountModel;
 import com.dam.springboot.models.OperationModel;
 import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.OperationServiceI;
@@ -35,8 +34,11 @@ public class OperationController {
 	
 	@GetMapping("/showOperationsView")
 	public String showAccounts(Model model) {
-		// Obtención de las operaciones
-		List<Operation> opList = opServiceI.findAllOperation();
+//		// Obtención de todas las operaciones ordenadas por id
+//		List<Operation> opList = opServiceI.findAllOperation();
+		
+		//Obtención de todas las operaciones ordenadas por fecha
+		List<Operation> opList = opServiceI.findOperationsOrderByDate();
 		
 		// Carga de datos al modelo: crear clave valor
 		model.addAttribute("opListView", opList);
@@ -92,7 +94,7 @@ public class OperationController {
 			accServiceI.updateAccount(acc);
 						
 		}
-		return "redirect:newDepositWithdrawalView";
+		return "redirect:showOperationsView";
 	}
 	
 	@PostMapping("/actWithdrawal")
@@ -148,7 +150,7 @@ public class OperationController {
 			}		
 						
 		}
-		return "redirect:newDepositWithdrawalView";
+		return "redirect:showOperationsView";
 	}
 	
 	@PostMapping("/actTransfer")
@@ -156,8 +158,7 @@ public class OperationController {
 		if (result.hasErrors()) {
 			throw new Exception("Parámetros de alta erróneos");			
 		} else {
-			//Lo primero de todo es comprobar que tiene saldo
-			//Si no lo tuviera cancelamos la operación
+			//Lo primero de todo es comprobar que tiene saldo y la cuenta de origen y destino son diferentes
 			double amount;
 			try {
 				amount = Double.parseDouble(newOpModel.getAmount());
@@ -167,7 +168,9 @@ public class OperationController {
 			
 			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
 				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
-			} else {
+			} else if(newOpModel.getAccountId() == newOpModel.getAccountIdTo()) {
+				throw new Exception("Operación cancelada: la cuenta origen y destino no pueden ser la misma.");
+			}else {
 				Operation newOpOrigin = new Operation();	
 				Operation newOpDestiny = new Operation();
 				
@@ -216,6 +219,6 @@ public class OperationController {
 			}		
 						
 		}
-		return "redirect:newDepositWithdrawalView";
+		return "redirect:showOperationsView";
 	}
 }
