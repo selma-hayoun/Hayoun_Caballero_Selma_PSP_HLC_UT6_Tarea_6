@@ -6,14 +6,15 @@
 	</head>
 	<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Búsqueda de cuentas</div>
+		<div class="card text-white bg-light mb-3">
+		  <div class="card-header bg-info"><h2>Búsqueda de cuentas</h2></div>
 		  <div class="card-body">
 				<form th:action="@{/actSearchAccount}" th:object="${searchedAccount}" method="POST">
 					<div class="form-group">
-			  			<label for="inpRegistration">Número de cuenta</label>
+			  			<label class="text-info font-weight-bold" for="inpRegistration">Número de cuenta</label>
 			  			<input type="text" class="form-control" id="inpTAccountRegistr" name="numAccount" placeholder="Introduzca parte del número de cuenta ...">
 					</div>
+					<br/>
 					<button type="submit" name="btnSearchAccountBy" class="btn btn-success">Buscar</button>
 					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>

@@ -6,22 +6,22 @@
 	</head>
 	<body class="card-body">
 		<div th:insert="navbar"/>	
-		<div class="card text-white bg-dark mb-3">
-		  	<div class="card-header">CUENTAS BANCARIAS</div>
+		<div class="card text-white bg-light mb-3">
+		  	<div class="card-header bg-info"><h2>Cuentas bancarias Issaries</h2></div>
 			<div class="card-body">
-				<table class="table table-striped table-dark">
-					<thead class="thead-light">
+				<table class="table table-striped">
+					<thead class="thead-light bg-info">
 						<tr>
-							<th scope="col" th:hidden="${btnUpdateAccountEnabled}">Editar</th>
-							<th scope="col">ID CUENTA</th>
-							<th scope="col">Número de cuenta</th>
-							<th scope="col">Fecha de creación</th>
-							<th scope="col">Balance</th>
-							<th scope="col" th:hidden="${btnOperationsAccountEnabled}">Operaciones</th>
-							<th scope="col" th:hidden="${btnDropAccountEnabled}">Eliminar</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnUpdateAccountEnabled}">Editar</th>
+							<th class="bg-info text-white" scope="col">ID CUENTA</th>
+							<th class="bg-info text-white" scope="col">Número de cuenta</th>
+							<th class="bg-info text-white" scope="col">Fecha de creación</th>
+							<th class="bg-info text-white" scope="col">Balance</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnOperationsAccountEnabled}">Operaciones</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnDropAccountEnabled}">Eliminar</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="text-info">
 						<th:block th:each="acc : ${accListView}">
 							<tr>
 								<td scope="row" th:hidden="${btnUpdateAccountEnabled}">
@@ -39,7 +39,7 @@
 									<form action="actOperationsAccount" method="post">
 										<button th:disabled="${btnOperationsAccountEnabled}" type="submit"
 											id="btnOperationsAccount" name="accId" th:value="${acc.id}"
-											class="btn btn-info"><i class="fa-solid fa-clipboard-list"></i></button>
+											class="btn btn-warning"><i class="fa-solid fa-clipboard-list"></i></button>
 									</form>
 								</td>
 								<td scope="row" th:hidden="${btnDropAccountEnabled}">
@@ -53,7 +53,7 @@
 						</th:block>
 					</tbody>
 				</table>
-				<a class="btn btn-info" th:href="@{index}" id="aBtnReturn" role="button">Volver</a>
+				<a class="btn btn-info" th:href="${previousUrl != null? previousUrl:'index'}" id="aBtnReturn" role="button">Volver</a>
 			</div>
 		</div>
 	</body>

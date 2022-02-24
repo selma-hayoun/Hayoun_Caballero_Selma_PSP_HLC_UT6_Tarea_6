@@ -6,26 +6,26 @@
 	</head>
 	<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  	<div class="card-header">Clientes</div>
+		<div class="card text-white bg-light mb-3">
+		  	<div class="card-header bg-info"><h2>Clientes</h2></div>
 			<div class="card-body">
-				<table class="table table-striped table-dark">
-					<thead class="thead-light">
+				<table class="table table-striped">
+					<thead class="thead-light bg-info">
 						<tr>
-							<th scope="col" th:hidden="${btnUpdatePClientEnabled}">Editar</th>
-							<th scope="col">ID del cliente</th>
-							<th scope="col">NIF</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">Apellidos</th>
-							<th scope="col">Año de nacimiento</th>
-							<th scope="col">Dirección</th>
-							<th scope="col">Email</th>
-							<th scope="col">Teléfono</th>
-							<th scope="col" th:hidden="${btnAccountsPClientEnabled}">Cuentas</th>
-							<th scope="col" th:hidden="${btnDropPClientEnabled}">Eliminar</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnUpdatePClientEnabled}">Editar</th>
+							<th class="bg-info text-white" scope="col">ID del cliente</th>
+							<th class="bg-info text-white" scope="col">NIF</th>
+							<th class="bg-info text-white" scope="col">Nombre</th>
+							<th class="bg-info text-white" scope="col">Apellidos</th>
+							<th class="bg-info text-white" scope="col">Año de nacimiento</th>
+							<th class="bg-info text-white" scope="col">Dirección</th>
+							<th class="bg-info text-white" scope="col">Email</th>
+							<th class="bg-info text-white" scope="col">Teléfono</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnAccountsPClientEnabled}">Cuentas</th>
+							<th class="bg-info text-white" scope="col" th:hidden="${btnDropPClientEnabled}">Eliminar</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="text-info">
 						<th:block th:each="client : ${pClientsListView}">
 							<tr>
 								<td scope="row" th:hidden="${btnUpdatePClientEnabled}">
@@ -47,7 +47,7 @@
 									<form action="actAccountsPClient" method="post">
 										<button th:disabled="${btnAccountsPClientEnabled}" type="submit"
 											id="btnAccountsPClient" name="pClientId" th:value="${client.id}"
-											class="btn btn-info"><i class="fa-solid fa-clipboard-list"></i></button>
+											class="btn btn-warning"><i class="fa-solid fa-clipboard-list"></i></button>
 									</form>
 								</td>
 								<td scope="row" th:hidden="${btnDropPClientEnabled}">

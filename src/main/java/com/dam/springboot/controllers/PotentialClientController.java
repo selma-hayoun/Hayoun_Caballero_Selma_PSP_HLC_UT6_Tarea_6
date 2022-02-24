@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dam.springboot.entities.Account;
@@ -70,7 +72,11 @@ public class PotentialClientController {
 	}
 	
 	@PostMapping("/actAccountsPClient")
-	public String showAccountsPotentialClient(@RequestParam String pClientId, Model model) {
+	public String showAccountsPotentialClient(@RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer,@RequestParam String pClientId, Model model) {
+		if( referrer != null ) {
+		      model.addAttribute("previousUrl", referrer);
+		}
+		
 		List<Long> accountsId = pClientServiceI.findAccountsIdById(Long.valueOf(pClientId));		
 		List<Account> clientAccounts = accServiceI.findAccountsById(accountsId);
 		

@@ -6,29 +6,30 @@
 	</head>
 		<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Datos Nueva Cuenta</div>
+		<div class="card text-white bg-light mb-3">
+		  <div class="card-header bg-info"><h2>Datos nueva cuenta</h2></div>
 		  <div class="card-body">
 				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST">				
 					<div class="form-group">
-			  			<label for="inpAccountRegs">Número de cuenta</label>
+			  			<label class="text-info font-weight-bold" for="inpAccountRegs">Número de cuenta</label>
 			  			<input type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpAccountBalance">Balance</label>
+						  <label class="text-info font-weight-bold" for="inpAccountBalance">Balance</label>
 						  <input type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance inicial ... (Opcional)">
 					</div>
 					<div class="form-group">
-						<label for="inpAccountOwners">Clientes asociados</label>
+						<label class="text-info font-weight-bold" for="inpAccountOwners">Clientes asociados</label>
 						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple">
 							<option th:each="client : ${myPClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>
 						</select>
-					</div>									
+					</div>	
+					<br/>								
 					<button type="submit" name="btnAddAccount" class="btn btn-success">Añadir</button>
-					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

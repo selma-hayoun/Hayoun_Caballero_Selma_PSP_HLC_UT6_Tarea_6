@@ -6,38 +6,48 @@
 	</head>
 		<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Datos Cuenta Bancaria</div>
+		<div class="card text-white bg-light mb-3">
+		  <div class="card-header bg-info"><h2>Datos Cuenta Bancaria</h2></div>
 		  <div class="card-body">
 				<form th:action="@{/actUpdateAccount}" th:object="${acc}" method="POST">
 				<!--ID DE LA CUENTA A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myAcc.id}" type="hidden" name="id"/>
 				<input th:value="${myAcc.createAt}" type="hidden" name="createAt"/>
 					<div class="form-group">
-			  			<label for="inpAccountRegs">Número de cuenta</label>
+			  			<label class="text-info font-weight-bold" for="inpAccountRegs">Número de cuenta</label>
 			  			<input th:value="${myAcc.numAccount}" type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpAccountBalance">Balance</label>
+						  <label class="text-info font-weight-bold" for="inpAccountBalance">Balance</label>
 						  <input th:value="${myAcc.balance}" required="required" type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance actualizado ...">
 					</div>
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label class="text-info font-weight-bold" for="inpAccountOwners">Clientes asociados</label>
+							<ul th:each="accClient : ${myPClients}">
+								<li class="text-info font-weight-bold" th:text="${accClient.nif}"/>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<p class="text-danger font-weight-bold">ATENCIÓN: <br/>
+							Si quiere mantener alguno de los clientes dueños de la cuenta tiene que seleccionarlos igualmente. 
+							Seleccione todos los dueños que debe tener la cuenta bancaria tras la actualización de los datos.
+							</p>						
+						</div>
+					</div>					
 					<div class="form-group">
-						<label for="inpAccountOwners">Clientes asociados</label>
-						<ul th:each="accClient : ${myPClients}">
-							<li th:text="${accClient.nif}"/>
-						</ul>
-					</div>
-					<div class="form-group">
-						<label for="inpPotentialClients">Clientes de Issaries</label>
+						<label class="text-info font-weight-bold" for="inpPotentialClients">Clientes de Issaries</label>
 						<select class="form-control" name="myOwners" id="inpPotentialClients" size="5" multiple="multiple">
-							<option th:each="client : ${pClients}"
+							<option class="text-info font-weight-bold"
+									th:each="client : ${pClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>
 						</select>
 					</div>
+					<br/>
 					<button type="submit" name="btnUpdateAccount" class="btn btn-success">Actualizar</button>
-					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

@@ -6,42 +6,42 @@
 	</head>
 		<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Datos Cliente</div>
+		<div class="card text-white bg-light mb-3">
+		  <div class="card-header bg-info"><h2>Datos Cliente</h2></div>
 		  <div class="card-body">
 				<form th:action="@{/actUpdateClient}" th:object="${client}" method="POST">
 				<!--ID DEL CLIENTE A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myClient.id}" type="hidden" name="id"/>
 					<div class="form-group">
-			  			<label for="inpClientRegs">NIF</label>
+			  			<label class="text-info font-weight-bold" for="inpClientRegs">NIF</label>
 			  			<input th:value="${myClient.nif}" type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientName">Nombre</label>
+						  <label class="text-info font-weight-bold" for="inpClientName">Nombre</label>
 						  <input th:value="${myClient.name}" type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientSurname">Apellidos</label>
+						  <label class="text-info font-weight-bold" for="inpClientSurname">Apellidos</label>
 						  <input th:value="${myClient.surname}" required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientYearBirth">Año de nacimiento</label>
+						  <label class="text-info font-weight-bold" for="inpClientYearBirth">Año de nacimiento</label>
 						  <input th:value="${myClient.yearBirth}" type="text" class="form-control" id="inpClientYearBirth" name="yearBirth" placeholder="Opcional">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientAddress">Dirección</label>
+						  <label class="text-info font-weight-bold" for="inpClientAddress">Dirección</label>
 						  <input th:value="${myClient.address}" type="text" class="form-control" id="inpClientAddress" name="address" placeholder="Opcional">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientEmail">Email</label>
+						  <label class="text-info font-weight-bold" for="inpClientEmail">Email</label>
 						  <input th:value="${myClient.email}" required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientTphno">Teléfono</label>
+						  <label class="text-info font-weight-bold" for="inpClientTphno">Teléfono</label>
 						  <input th:value="${myClient.tphno}" required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
 					</div>
 					<button type="submit" name="btnUpdateClient" class="btn btn-success">Actualizar</button>
-					<a class="btn btn-primary" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

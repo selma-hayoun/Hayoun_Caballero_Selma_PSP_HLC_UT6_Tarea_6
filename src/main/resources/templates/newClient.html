@@ -6,45 +6,45 @@
 	</head>
 		<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">Datos Nuevo Cliente</div>
+		<div class="card text-white bg-light mb-3">
+		  <div class="card-header bg-info"><h2>Datos nuevo cliente potencial</h2></div>
 		  <div class="card-body">
 				<form th:action="@{/actAddClient}" th:object="${newClient}" method="POST" class="needs-validation" novalidate>
 					<div class="form-group">
-			  			<label for="inpClientRegs">NIF</label>
+			  			<label class="text-info font-weight-bold" for="inpClientRegs">NIF</label>
 			  			<input type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
 			  			<div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
-						  <label for="inpClientName">Nombre</label>
+						  <label class="text-info font-weight-bold" for="inpClientName">Nombre</label>
 						  <input type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
 						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
-						  <label for="inpClientSurname">Apellidos</label>
+						  <label class="text-info font-weight-bold" for="inpClientSurname">Apellidos</label>
 						  <input required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
 						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
-						  <label for="inpClientYearBirth">Año de nacimiento</label>
+						  <label class="text-info font-weight-bold" for="inpClientYearBirth">Año de nacimiento</label>
 						  <input type="text" class="form-control" id="inpClientYearBirth" name="yearBirth" placeholder="Opcional">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientAddress">Dirección</label>
+						  <label class="text-info font-weight-bold" for="inpClientAddress">Dirección</label>
 						  <input type="text" class="form-control" id="inpClientAddress" name="address" placeholder="Opcional">
 					</div>
 					<div class="form-group">
-						  <label for="inpClientEmail">Email</label>
+						  <label class="text-info font-weight-bold" for="inpClientEmail">Email</label>
 						  <input required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
 						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
-						  <label for="inpClientTphno">Teléfono</label>
+						  <label class="text-info font-weight-bold" for="inpClientTphno">Teléfono</label>
 						  <input required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
 						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<button type="submit" name="btnAddClient" class="btn btn-success">Añadir</button>
-					<a class="btn btn-primary" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>

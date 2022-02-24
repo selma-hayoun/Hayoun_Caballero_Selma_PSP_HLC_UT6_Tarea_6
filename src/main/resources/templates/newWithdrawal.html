@@ -6,20 +6,20 @@
 	</head>
 		<body class="card-body">
 		<div th:insert="navbar"/>
-		<div class="card text-white bg-dark mb-3">		
-		  <div class="card-header">Datos Operación de Retirada</div>	
+		<div class="card text-white bg-light mb-3">		
+		  <div class="card-header bg-info"><h2>Datos operación de retirada</h2></div>	
 		  <div class="card-body">
-		  <label>Datos del cliente:</label>
-				<table class="table table-striped table-dark">
+		  <label class="text-info font-weight-bold">Datos del cliente</label>
+				<table class="table table-striped">
 					<thead class="thead-light">
 						<tr>
-							<th scope="col">ID del cliente</th>
-							<th scope="col">NIF</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">Apellidos</th>
+							<th class="bg-info text-white" scope="col">ID del cliente</th>
+							<th class="bg-info text-white" scope="col">NIF</th>
+							<th class="bg-info text-white" scope="col">Nombre</th>
+							<th class="bg-info text-white" scope="col">Apellidos</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="text-info">
 						<tr>
 							<td scope="row" th:text="${myPClient.id}" />
 							<td scope="row" th:text="${myPClient.nif}" />
@@ -32,20 +32,22 @@
 		  <div class="card-body">
 				<form th:action="@{/actWithdrawal}" th:object="${newOpModel}" method="POST">							
 					<div class="form-group">
-						<label for="inpClientAccounts">Cuentas del cliente</label>
+						<label class="text-info font-weight-bold" for="inpClientAccounts">Cuentas del cliente</label>
 						<select class="form-control" name="accountId" id="inpClientAccounts" size="5" multiple="multiple">
-							<option th:each="acc : ${clientAccs}"
+							<option class="text-info font-weight-bold"
+									th:each="acc : ${clientAccs}"
 									th:value="${{acc.id}}"
 									th:text="${acc.numAccount}">
 							</option>
 						</select>
 					</div>
 					<div class="form-group">
-						  <label for="inpOperationAmount">Cantidad</label>
+						  <label class="text-info font-weight-bold" for="inpOperationAmount">Cantidad</label>
 						  <input type="text" class="form-control" id="inpOperationAmount" name="amount" placeholder="Cantidad ...">
-					</div>														
+					</div>	
+					<br/>													
 					<button type="submit" name="btnWithdrawal" class="btn btn-success">Guardar</button>
-					<a class="btn btn-primary" href="newDepositWithdrawalView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="newDepositWithdrawalView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>
