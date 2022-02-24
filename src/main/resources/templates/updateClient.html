@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
+	<head th:insert="libs">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>ISSARIES</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</head>
 		<body class="card-body">
+		<div th:insert="navbar"/>
 		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">Datos Cliente</div>
 		  <div class="card-body">
