@@ -86,8 +86,11 @@ public class AccountController {
 	@PostMapping("/actAddAccount")
 	private String addNewAccount(@Valid @ModelAttribute AccountModel newAccountModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");
-			
+			if(accServiceI.getAccountByNumAccount(newAccountModel.getNumAccount()) != null) {
+				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese número de cuenta.");
+			} else {
+				throw new Exception("Parámetros de alta erróneos");
+			}			
 		} else {
 			Account newAccount = new Account();
 			newAccount.setNumAccount(newAccountModel.getNumAccount());
@@ -126,7 +129,11 @@ public class AccountController {
 	@PostMapping("/actUpdateAccount")
 	private String updateAccount(@Valid @ModelAttribute AccountModel acc, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");
+			if(accServiceI.getAccountByNumAccount(acc.getNumAccount()) != null) {
+				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese número de cuenta.");
+			} else {
+				throw new Exception("Parámetros de alta erróneos");
+			}
 		} else {
 			Account account = accServiceI.getById(acc.getId());
 			

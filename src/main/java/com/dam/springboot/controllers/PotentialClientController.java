@@ -129,7 +129,11 @@ public class PotentialClientController {
 	@PostMapping("/actAddClient")
 	private String addNewPotentialClient(@Valid @ModelAttribute PotentialClient newClient, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");
+			if(pClientServiceI.getPotentialClientByNif(newClient.getNif()) != null) {
+				throw new Exception("Ya existe un cliente dado de alta con ese NIF.");
+			} else {
+				throw new Exception("Parámetros de alta erróneos");
+			}			
 		} else {
 			// Se añade el nuevo cliente
 			pClientServiceI.addPotentialClient(newClient);		
@@ -140,7 +144,11 @@ public class PotentialClientController {
 	@PostMapping("/actUpdateClient")
 	private String updatePotentialClient(@Valid @ModelAttribute PotentialClient client, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");
+			if(pClientServiceI.getPotentialClientByNif(client.getNif()) != null) {
+				throw new Exception("Ya existe un cliente dado de alta con ese NIF.");
+			} else {
+				throw new Exception("Parámetros de alta erróneos");
+			}
 		} else {
 			pClientServiceI.updatePotentialClient(client);		
 		}

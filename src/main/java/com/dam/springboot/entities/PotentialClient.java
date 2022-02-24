@@ -54,7 +54,7 @@ public class PotentialClient implements Serializable {
 	
 	@NotEmpty(message = "no puede estar vacio")
 	@Email(message = "no es una dirección de correo bien formada")
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	@Getter @Setter private String email;
 	
 	@NotEmpty(message = "no puede estar vacio")
