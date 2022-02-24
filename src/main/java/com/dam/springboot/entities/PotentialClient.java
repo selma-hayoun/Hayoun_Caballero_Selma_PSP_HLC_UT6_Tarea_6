@@ -37,11 +37,12 @@ public class PotentialClient implements Serializable {
 	@Getter @Setter private String nif;
 	
 	@NotEmpty(message = "no puede estar vacio")
+	@Size(min = 4, max = 48, message = "el tamaño tiene que estar entre 4 y 48")
 	@Column(name = "Apellidos")
 	@Getter @Setter private String surname;
 	
 	@NotEmpty(message = "no puede estar vacio")
-	@Size(min = 4, max = 24, message = "el tamaño tiene que estar entre 4 y 24")
+	@Size(min = 2, max = 24, message = "el tamaño tiene que estar entre 2 y 24")
 	@Column(name = "Nombre", nullable = false)
 	@Getter @Setter private String name;	
 	

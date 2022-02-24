@@ -14,22 +14,27 @@
 				<input th:value="${myClient.id}" type="hidden" name="id"/>
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpClientRegs">NIF</label>
-			  			<input th:value="${myClient.nif}" type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
-			  			<div class="invalid-feedback">Campo obligatorio</div>
+			  			<input th:value="${myClient.nif}" type="text" required="required" class="form-control" id="inpClientRegs" 
+			  			name="nif" placeholder="NIF ..." pattern="^[0-9]{8}[-]{1}[a-zA-Z]{1}$">
+			  			<div class="invalid-feedback">Campo obligatorio. Formato: 12345678-A</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientName">Nombre</label>
-						  <input th:value="${myClient.name}" type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
-						  <div class="invalid-feedback">Campo obligatorio</div>
+						  <input th:value="${myClient.name}" type="text" required="required" class="form-control" id="inpClientName" 
+						  name="name" placeholder="Nombre ..." pattern="^[a-zA-Z''-'\s]{2,24}$">
+						  <div class="invalid-feedback">Campo obligatorio no numérico. Entre 2 y 24 caracteres.</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientSurname">Apellidos</label>
-						  <input th:value="${myClient.surname}" required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
-						  <div class="invalid-feedback">Campo obligatorio</div>
+						  <input th:value="${myClient.surname}" required="required" type="text" class="form-control" id="inpClientSurname" 
+						  name="surname" placeholder="Apellidos ..." pattern="^[a-zA-Z''-'\s]{4,48}$">
+						  <div class="invalid-feedback">Campo obligatorio no numérico. Entre 4 y 48 caracteres.</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientYearBirth">Año de nacimiento</label>
-						  <input th:value="${myClient.yearBirth}" type="text" class="form-control" id="inpClientYearBirth" name="yearBirth" placeholder="Opcional">
+						  <input th:value="${myClient.yearBirth}" type="text" class="form-control" id="inpClientYearBirth" name="yearBirth" placeholder="Opcional"
+						  pattern="^[0-9]{4}">
+						  <div class="invalid-feedback">Campo incorrecto. Ejemplo: 2000</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientAddress">Dirección</label>
@@ -37,13 +42,15 @@
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientEmail">Email</label>
-						  <input th:value="${myClient.email}" required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
-						  <div class="invalid-feedback">Campo obligatorio</div>
+						  <input th:value="${myClient.email}" required="required" type="text" class="form-control" id="inpClientEmail" 
+						  name="email" placeholder="Email ..." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+						  <div class="invalid-feedback">Campo obligatorio. Formato: issaries@bank.es</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientTphno">Teléfono</label>
-						  <input th:value="${myClient.tphno}" required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
-						  <div class="invalid-feedback">Campo obligatorio</div>
+						  <input th:value="${myClient.tphno}" required="required" type="text" class="form-control" id="inpClientTphno" 
+						  name="tphno" placeholder="+34 666 ..." pattern="^+[0-9\s]{9,18}$">
+						  <div class="invalid-feedback">Campo obligatorio de formato numérico. Ejemplo: 957 32 15 64. De 9 a 18 caracteres.</div>
 					</div>
 					<button type="submit" name="btnUpdateClient" class="btn btn-success">Actualizar</button>
 					<a class="btn btn-info" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>

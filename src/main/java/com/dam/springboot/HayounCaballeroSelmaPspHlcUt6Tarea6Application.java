@@ -58,7 +58,7 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 		System.out.println("--------------------------");
 		
 		//Obtención de cliente por NIF
-		PotentialClient pclt = potentialClientServiceI.getPotentialClientByNif("1111A");
+		PotentialClient pclt = potentialClientServiceI.getPotentialClientByNif("11111111-A");
 		
 		System.out.println(pclt.toString());
 		
@@ -76,7 +76,7 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 		
 //		//Añadir un cliente potencial
 //		PotentialClient myTestClient = new PotentialClient();
-//		myTestClient.setNif("8888B");
+//		myTestClient.setNif("88888888-B");
 //		myTestClient.setSurname("Barasona Leon");
 //		myTestClient.setName("Verónica");
 //		myTestClient.setYearBirth(1978);

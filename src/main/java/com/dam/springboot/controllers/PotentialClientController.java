@@ -110,6 +110,12 @@ public class PotentialClientController {
 			if (temp != null) {
 				myClientsList.addAll(temp);
 			}
+		} else if(!StringUtils.hasText(cNif) && !StringUtils.hasText(cName)) {
+			//Si ha dejado ambos vacíos mostralos el listado entero
+			List<PotentialClient> temp = pClientServiceI.findAllPotentialClient();
+			if (temp != null) {
+				myClientsList.addAll(temp);
+			}
 		} else {
 			throw new Exception("Parámetros de búsqueda erróneos.");
 		}

@@ -45,8 +45,9 @@
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpOperationAmount">Cantidad</label>
-						  <input type="text" required="required" class="form-control" id="inpOperationAmount" name="amount" placeholder="Cantidad ...">
-						  <div class="invalid-feedback">Campo obligatorio</div>
+						  <input type="text" required="required" class="form-control" id="inpOperationAmount" 
+						  name="amount" placeholder="Cantidad ..." pattern="^[0-9.]+$">
+						  <div class="invalid-feedback">Campo numérico obligatorio. Ejemplo: 500.45</div>
 					</div>	
 					<br/>													
 					<button type="submit" name="btnDeposit" class="btn btn-success">Guardar</button>
