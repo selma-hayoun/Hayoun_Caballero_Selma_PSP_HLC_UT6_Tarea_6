@@ -9,10 +9,11 @@
 		<div class="card text-white bg-light mb-3">
 		  <div class="card-header bg-info"><h2>Datos nueva cuenta</h2></div>
 		  <div class="card-body">
-				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST">				
+				<form th:action="@{/actAddAccount}" th:object="${newAccountModel}" method="POST" class="needs-validation" novalidate>				
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpAccountRegs">Número de cuenta</label>
 			  			<input type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
+						<div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpAccountBalance">Balance</label>
@@ -20,12 +21,14 @@
 					</div>
 					<div class="form-group">
 						<label class="text-info font-weight-bold" for="inpAccountOwners">Clientes asociados</label>
-						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple">
+						<select class="form-control" name="myOwners" id="inpAccountOwners" size="5" multiple="multiple" required="required">
 							<option th:each="client : ${myPClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>
 						</select>
+						<div class="invalid-feedback">Debe tener al menos un titular</div>
+						<div class="valid-feedback">Titular(es) seleccionado</div>
 					</div>	
 					<br/>								
 					<button type="submit" name="btnAddAccount" class="btn btn-success">Añadir</button>
@@ -33,5 +36,25 @@
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+			</script>
 	</body>
 </html>

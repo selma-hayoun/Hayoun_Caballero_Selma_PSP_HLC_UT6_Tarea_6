@@ -9,20 +9,23 @@
 		<div class="card text-white bg-light mb-3">
 		  <div class="card-header bg-info"><h2>Datos Cliente</h2></div>
 		  <div class="card-body">
-				<form th:action="@{/actUpdateClient}" th:object="${client}" method="POST">
+				<form th:action="@{/actUpdateClient}" th:object="${client}" method="POST" class="needs-validation" novalidate>
 				<!--ID DEL CLIENTE A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myClient.id}" type="hidden" name="id"/>
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpClientRegs">NIF</label>
 			  			<input th:value="${myClient.nif}" type="text" required="required" class="form-control" id="inpClientRegs" name="nif" placeholder="NIF ...">
+			  			<div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientName">Nombre</label>
 						  <input th:value="${myClient.name}" type="text" required="required" class="form-control" id="inpClientName" name="name" placeholder="Nombre ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientSurname">Apellidos</label>
 						  <input th:value="${myClient.surname}" required="required" type="text" class="form-control" id="inpClientSurname" name="surname" placeholder="Apellidos ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientYearBirth">Año de nacimiento</label>
@@ -35,15 +38,37 @@
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientEmail">Email</label>
 						  <input th:value="${myClient.email}" required="required" type="text" class="form-control" id="inpClientEmail" name="email" placeholder="Email ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpClientTphno">Teléfono</label>
 						  <input th:value="${myClient.tphno}" required="required" type="text" class="form-control" id="inpClientTphno" name="tphno" placeholder="+34 666 ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<button type="submit" name="btnUpdateClient" class="btn btn-success">Actualizar</button>
 					<a class="btn btn-info" href="showPotentialClientsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+			</script>
 	</body>
 </html>

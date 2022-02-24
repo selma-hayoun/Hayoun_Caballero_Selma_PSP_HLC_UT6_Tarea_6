@@ -9,17 +9,19 @@
 		<div class="card text-white bg-light mb-3">
 		  <div class="card-header bg-info"><h2>Datos Cuenta Bancaria</h2></div>
 		  <div class="card-body">
-				<form th:action="@{/actUpdateAccount}" th:object="${acc}" method="POST">
+				<form th:action="@{/actUpdateAccount}" th:object="${acc}" method="POST" class="needs-validation" novalidate>
 				<!--ID DE LA CUENTA A REGISTRAR PARA PODER ACTUALIZAR-->
 				<input th:value="${myAcc.id}" type="hidden" name="id"/>
 				<input th:value="${myAcc.createAt}" type="hidden" name="createAt"/>
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpAccountRegs">Número de cuenta</label>
 			  			<input th:value="${myAcc.numAccount}" type="text" required="required" class="form-control" id="inpAccountRegs" name="numAccount" placeholder="Número de cuenta ...">
+			  			<div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpAccountBalance">Balance</label>
 						  <input th:value="${myAcc.balance}" required="required" type="text" class="form-control" id="inpAccountBalance" name="balance" placeholder="Balance actualizado ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-3">
@@ -37,13 +39,15 @@
 					</div>					
 					<div class="form-group">
 						<label class="text-info font-weight-bold" for="inpPotentialClients">Clientes de Issaries</label>
-						<select class="form-control" name="myOwners" id="inpPotentialClients" size="5" multiple="multiple">
+						<select class="form-control" required="required" name="myOwners" id="inpPotentialClients" size="5" multiple="multiple">
 							<option class="text-info font-weight-bold"
 									th:each="client : ${pClients}"
 									th:value="${{client.id}}"
 									th:text="${client.nif}">
 							</option>
 						</select>
+						<div class="invalid-feedback">Debe tener al menos un titular</div>
+						<div class="valid-feedback">Titular(es) seleccionado</div>
 					</div>
 					<br/>
 					<button type="submit" name="btnUpdateAccount" class="btn btn-success">Actualizar</button>
@@ -51,5 +55,25 @@
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+			</script>
 	</body>
 </html>

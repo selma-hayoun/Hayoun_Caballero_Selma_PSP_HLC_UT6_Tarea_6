@@ -9,16 +9,37 @@
 		<div class="card text-white bg-light mb-3">
 		  <div class="card-header bg-info"><h2>Búsqueda de cuentas</h2></div>
 		  <div class="card-body">
-				<form th:action="@{/actSearchAccount}" th:object="${searchedAccount}" method="POST">
+				<form th:action="@{/actSearchAccount}" th:object="${searchedAccount}" method="POST" class="needs-validation" novalidate>
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpRegistration">Número de cuenta</label>
-			  			<input type="text" class="form-control" id="inpTAccountRegistr" name="numAccount" placeholder="Introduzca parte del número de cuenta ...">
+			  			<input type="text" required="required" class="form-control" id="inpTAccountRegistr" name="numAccount" placeholder="Introduzca parte del número de cuenta ...">
+			  			<div class="invalid-feedback">No puede dejarse vacío</div>			  			
 					</div>
 					<br/>
 					<button type="submit" name="btnSearchAccountBy" class="btn btn-success">Buscar</button>
-					<a class="btn btn-primary" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
+					<a class="btn btn-info" href="showAccountsView" role="button" id="aBtnReturn">Volver</a>
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+			</script>
 	</body>
 </html>

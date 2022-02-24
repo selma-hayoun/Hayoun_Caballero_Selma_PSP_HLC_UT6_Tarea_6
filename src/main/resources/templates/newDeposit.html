@@ -30,20 +30,23 @@
 				</table>
 			</div>	  
 		  <div class="card-body">
-				<form th:action="@{/actDeposit}" th:object="${newOpModel}" method="POST">							
+				<form th:action="@{/actDeposit}" th:object="${newOpModel}" method="POST" class="needs-validation" novalidate>							
 					<div class="form-group">
 						<label class="text-info font-weight-bold" for="inpClientAccounts">Cuentas del cliente</label>
-						<select class="form-control" name="accountId" id="inpClientAccounts" size="5" multiple="multiple">
+						<select class="form-control" required="required" name="accountId" id="inpClientAccounts" size="5" multiple="multiple">
 							<option class="text-info font-weight-bold"
 									th:each="acc : ${clientAccs}"
 									th:value="${{acc.id}}"
 									th:text="${acc.numAccount}">
 							</option>
+							<div class="invalid-feedback">Debe seleccionar una de las cuentas</div>
+							<div class="valid-feedback">Cuenta seleccionada</div>
 						</select>
 					</div>
 					<div class="form-group">
 						  <label class="text-info font-weight-bold" for="inpOperationAmount">Cantidad</label>
-						  <input type="text" class="form-control" id="inpOperationAmount" name="amount" placeholder="Cantidad ...">
+						  <input type="text" required="required" class="form-control" id="inpOperationAmount" name="amount" placeholder="Cantidad ...">
+						  <div class="invalid-feedback">Campo obligatorio</div>
 					</div>	
 					<br/>													
 					<button type="submit" name="btnDeposit" class="btn btn-success">Guardar</button>
@@ -51,5 +54,25 @@
 				</form>
 			  </div>
 			</div>
+			<script>
+				//Script de validación de datos
+				(function() {
+				  'use strict';
+				  window.addEventListener('load', function() {
+				    // Recoge los datos del formulario y aplica las validaciones
+				    var forms = document.getElementsByClassName('needs-validation');
+				    // Pasa sobre los campos en bucle y previene que los datos del formulario se envíen
+				    var validation = Array.prototype.filter.call(forms, function(form) {
+				      form.addEventListener('submit', function(event) {
+				        if (form.checkValidity() === false) {
+				          event.preventDefault();
+				          event.stopPropagation();
+				        }
+				        form.classList.add('was-validated');
+				      }, false);
+				    });
+				  }, false);
+				})();
+			</script>
 	</body>
 </html>
