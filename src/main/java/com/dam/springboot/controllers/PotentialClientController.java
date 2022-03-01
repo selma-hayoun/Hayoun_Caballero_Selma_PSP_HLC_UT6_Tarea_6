@@ -59,8 +59,7 @@ public class PotentialClientController {
 		pClientServiceI.removePotentialClientById(Long.valueOf(pClientId));
 		
 		//Debemos que buscar las cuentas huérfanas y eliminarlas
-		//Estarán en la tabla de Accounts pero no en la N:M		
-		
+		//Estarán en la tabla de Accounts pero no en la N:M	
 		for(Account acc : clientAccounts) {
 			if(accServiceI.countOrphanAccounts(acc.getId()) == 0) {
 				accServiceI.removeAccountById(acc.getId());

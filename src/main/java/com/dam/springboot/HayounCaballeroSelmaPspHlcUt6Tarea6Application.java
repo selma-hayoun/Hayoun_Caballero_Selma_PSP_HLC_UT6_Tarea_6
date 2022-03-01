@@ -13,6 +13,17 @@ import com.dam.springboot.entities.PotentialClient;
 import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
+/**
+ * Clase de nuestra aplicación
+ * 
+ * Lanza nuestra aplicación.
+ * CommandLineRunner permite sacar por consola información, lo ejecutado en el Run().
+ * Normalmente no se utilizaría.
+ * 
+ * @author Selma Hayoun Caballero
+ * @version 0.1, 01/03/2022
+ *
+ */
 @SpringBootApplication
 public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLineRunner{
 
@@ -22,14 +33,30 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 	@Autowired
 	private PotentialClientServiceI potentialClientServiceI;
 	
+	/**
+	 * Servicio de acceso y gestión de cuentas de clientes
+	 */
 	@Autowired
 	private AccountServiceI accServiceI;
 	
 	
+	/**
+	 * Método principal de lanzamiento de la aplicación
+	 * 
+	 * Lanza el run del hilo principal de la aplicación.
+	 * 
+	 * @param args Argumentos de entrada
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(HayounCaballeroSelmaPspHlcUt6Tarea6Application.class, args);
 	}
 
+	/**
+	 * Método run de la aplicación
+	 * 
+	 * Hilo principal de ejecución del proyecto.
+	 * Lo hemos utilizado para testeo y verificación en los primeros pasos de desarollo de la aplicación.
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		
