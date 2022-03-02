@@ -57,12 +57,12 @@ public class AccountController {
 	/**
 	 * M&eacute;todo para mostrar la vista showAccounts con todas las cuentas bancarias
 	 * 
-	 * @param model Modelo de la vista al que añadimos como atributos la lista y el bot&oacute;n
+	 * @param model Modelo de la vista al que a&ntilde;adimos como atributos la lista y el bot&oacute;n
 	 * @return Nombre de la vista a mostrar
 	 */
 	@GetMapping("/showAccountsView")
 	public String showAccounts(Model model) {
-		// Obtenci&oacute;n de las cuentas
+		// Obtención de las cuentas
 		List<Account> accList = accServiceI.findAllAccount();
 		
 		// Carga de datos al modelo: crear clave valor
@@ -81,7 +81,7 @@ public class AccountController {
 	 */
 	@PostMapping("/actDropAccount")
 	public String removeAccount(@RequestParam String accId, Model model) {
-		// Eliminaci&oacute;n de Cuenta
+		// Eliminación de Cuenta
 		accServiceI.removeAccountById(Long.valueOf(accId));		
 		return "redirect:showAccountsView";
 	}
@@ -90,7 +90,7 @@ public class AccountController {
 	 * M&eacute;todo para la acci&oacute;n de mostrar b&uacute;squeda de cuenta bancaria por los par&aacute;metros del objeto 
 	 * Account recibido.
 	 * 
-	 * A la vista de listar cuentas bancarias le añade a su modelo la lista resultante de buscar
+	 * A la vista de listar cuentas bancarias le a&ntilde;ade a su modelo la lista resultante de buscar
 	 * los par&aacute;metros introducidos por el usuario.
 	 * 
 	 * @param searchedAccount Objeto Account mapeado por la vista con los par&aacute;mentros introducidos por el usuario
@@ -108,13 +108,13 @@ public class AccountController {
 		String accNum = searchedAccount.getNumAccount();
 		
 		if (StringUtils.hasText(accNum)) {
-			// B&uacute;squeda por N&uacute;mero de cuenta (no exacto)
+			// Búsqueda por Número de cuenta (no exacto)
 			List<Account> temp = accServiceI.findByNumAccountContaining(accNum);
 			if (temp != null) {
 				accList.addAll(temp);
 			}
 		} else {
-			throw new Exception("Par&aacute;metros de b&uacute;squeda err&oacute;neos.");
+			throw new Exception("Parámetros de búsqueda erróneos.");
 		}
 		// Carga de datos al modelo
 		model.addAttribute("accListView", accList);
@@ -124,7 +124,7 @@ public class AccountController {
 	}
 
 	/**
-	 * M&eacute;todo para la acci&oacute;n de añadir una cuenta bancaria nueva.
+	 * M&eacute;todo para la acci&oacute;n de a&ntilde;adir una cuenta bancaria nueva.
 	 * 
 	 * @param newAccountModel Objeto AccountModel mapeado por la vista
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
@@ -137,7 +137,7 @@ public class AccountController {
 			if(accServiceI.getAccountByNumAccount(newAccountModel.getNumAccount()) != null) {
 				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese n&uacute;mero de cuenta.");
 			} else {
-				throw new Exception("Par&aacute;metros de alta err&oacute;neos");
+				throw new Exception("Parámetros de búsqueda erróneos.");
 			}			
 		} else {
 			Account newAccount = new Account();
@@ -191,7 +191,7 @@ public class AccountController {
 			if(accServiceI.getAccountByNumAccount(acc.getNumAccount()) != null) {
 				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese n&uacute;mero de cuenta.");
 			} else {
-				throw new Exception("Par&aacute;metros de alta err&oacute;neos");
+				throw new Exception("Parámetros de búsqueda erróneos.");
 			}
 		} else {
 			Account account = accServiceI.getById(acc.getId());

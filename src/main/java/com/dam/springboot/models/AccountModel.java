@@ -8,8 +8,8 @@ import lombok.Setter;
 /**
  * Clase AccountModel
  * 
- * Modelo para la recogida de datos para el mapeo de un objeto Account, tanto en su creación
- * como para su actualización.
+ * Modelo para la recogida de datos para el mapeo de un objeto Account, tanto en su creaci&oacute;n
+ * como para su actualizaci&oacute;n.
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -21,14 +21,14 @@ public class AccountModel {
 	/**
 	 * Clave primaria
 	 * 
-	 * Número autoincremental
+	 * N&uacute;mero autoincremental
 	 */
 	@Getter @Setter private Long id;
 	
 	/**
-	 * Número de cuenta bancaria
+	 * N&uacute;mero de cuenta bancaria
 	 * 
-	 * Tiene que ser único y no puede quedarse vacío
+	 * Tiene que ser &uacute;nico y no puede quedarse vac&iacute;o
 	 */
 	@Getter @Setter private String numAccount;
 	
@@ -38,12 +38,12 @@ public class AccountModel {
 	@Getter @Setter private String balance;
 	
 	/**
-	 * Array de identificadores de dueños recuperados de la vista
+	 * Array de identificadores de due&ntilde;os recuperados de la vista
 	 */
 	@Getter @Setter private Long[] myOwners;
 
 	/**
-	 * Impresión de los atributos del objeto por consola
+	 * Impresi&oacute;n de los atributos del objeto por consola
 	 */
 	@Override
 	public String toString() {

@@ -20,8 +20,8 @@ import lombok.*;
 /**
  * Clase Operation
  * 
- * Entidad que representa una operación de nuestra aplicación.
- * Contiene los atributos y etiquetas necesarios para la creación de la tabla Operaciones
+ * Entidad que representa una operaci&oacute;n de nuestra aplicaci&oacute;n.
+ * Contiene los atributos y etiquetas necesarios para la creaci&oacute;n de la tabla Operaciones
  * y sus relaciones con el resto de tablas. En concreto, Cuentas.
  * 
  * @author Selma Hayoun Caballero
@@ -34,8 +34,8 @@ import lombok.*;
 public class Operation implements Serializable {	
 
 	/**
-	 * Id único para el objeto en la serialización
-	 * Usamos la segunda opción para no darle el mismo a todas las clases
+	 * Id &uacute;nico para el objeto en la serializaci&oacute;n
+	 * Usamos la segunda opci&oacute;n para no darle el mismo a todas las clases
 	 * y ganar ventaja de carga usando el generated y no el default
 	 */
 	private static final long serialVersionUID = -7564460337320474981L;
@@ -43,14 +43,14 @@ public class Operation implements Serializable {
 	/**
 	 * Clave primaria
 	 * 
-	 * Número autoincremental
+	 * N&uacute;mero autoincremental
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Long id;
 	
 	/**
-	 * Tipo de operación
+	 * Tipo de operaci&oacute;n
 	 * 
 	 * Recoge un valor de nuestro enumerado en formato texto gracias a la etiqueta @Enumerated(value = EnumType.STRING)
 	 */
@@ -59,7 +59,7 @@ public class Operation implements Serializable {
 	@Getter @Setter private OperationType op;
 	
 	/**
-	 * Fecha de realización de la operación
+	 * Fecha de realizaci&oacute;n de la operaci&oacute;n
 	 */
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "FechaOperacion")
@@ -67,7 +67,7 @@ public class Operation implements Serializable {
 	@Getter @Setter private Date createAt;
 	
 	/**
-	 * Montante de la operación
+	 * Montante de la operaci&oacute;n
 	 * 
 	 * Por defecto se inicializa a 0
 	 */
@@ -76,15 +76,15 @@ public class Operation implements Serializable {
 	@Getter @Setter private double amount = 0;
 	
 	/**
-	 * Clave foránea: Id de la cuenta bancaria a la cual pertenece
+	 * Clave for&aacute;nea: Id de la cuenta bancaria a la cual pertenece
 	 * 
-	 * La relación 1:N entre Account y Operation ya establece esta clave foránea automáticamente,
+	 * La relaci&oacute;n 1:N entre Account y Operation ya establece esta clave for&aacute;nea autom&aacute;ticamente,
 	 * pero hemos mapeado el atributo para poder trabajar con las operaciones desde el servicio.
 	 */
 	@Getter @Setter private Long account_id;
 
 	/**
-	 * Impresión personalizada de Operation para pruebas y verificaciones por consola
+	 * Impresi&oacute;n personalizada de Operation para pruebas y verificaciones por consola
 	 */
 	@Override
 	public String toString() {

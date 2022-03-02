@@ -24,7 +24,7 @@ import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.OperationServiceI;
 
 /**
- * Clase OperationController: controlador para la gestión de operaciones
+ * Clase OperationController: controlador para la gesti&oacute;n de operaciones
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -50,8 +50,8 @@ public class OperationController {
 	private AccountServiceI accServiceI;
 	
 	/**
-	 * Método para mostrar la vista showOperations con todas las operaciones ordenadas por fecha
-	 * (las más actuales primero)
+	 * M&eacute;todo para mostrar la vista showOperations con todas las operaciones ordenadas por fecha
+	 * (las m&aacute;s actuales primero)
 	 * 
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
@@ -72,20 +72,20 @@ public class OperationController {
 	}
 	
 	/**
-	 * Método para la acción de realizar un depósito en una cuenta determinada de un cliente potencial concreto
+	 * M&eacute;todo para la acci&oacute;n de realizar un dep&oacute;sito en una cuenta determinada de un cliente potencial concreto
 	 * 
 	 * Utilizamos el modelo OperationModel para recopilar los datos del formulario y con los
-	 * mismos construir nuestro objeto Operation. La fecha se registra la del momento de la operación.
+	 * mismos construir nuestro objeto Operation. La fecha se registra la del momento de la operaci&oacute;n.
 	 * 
 	 * @param newOpModel Objeto OperationModel mapeado por la vista
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
-	 * @return Nombre de la vista a mostrar: redirige al método {@link #showOperations(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al m&eacute;todo {@link #showOperations(Model)}
 	 * @throws Exception Captura las posibles excepciones de mapeo y extracci&oacute;n de datos
 	 */
 	@PostMapping("/actDeposit")
 	private String addDeposit(@Valid @ModelAttribute OperationModel newOpModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");			
+			throw new Exception("Parámetros de búsqueda erróneos.");			
 		} else {
 			Operation newOp = new Operation();			
 			
@@ -120,7 +120,7 @@ public class OperationController {
 			System.out.println(newOp.toString());
 			System.out.println(newOpModel.toString());
 			
-			// Se añade la nueva operación
+			// Se a&ntilde;ade la nueva operación
 			opServiceI.addOperation(newOp);	
 			
 			//Se actualiza el balance de la cuenta
@@ -133,20 +133,20 @@ public class OperationController {
 	}
 	
 	/**
-	 * Método para la acción de realizar una retirada de una cuenta de un cliente potencial concreto
+	 * M&eacute;todo para la acci&oacute;n de realizar una retirada de una cuenta de un cliente potencial concreto
 	 * 
 	 * Utilizamos el modelo OperationModel para recopilar los datos del formulario y con los
-	 * mismos construir nuestro objeto Operation. La fecha se registra la del momento de la operación.
+	 * mismos construir nuestro objeto Operation. La fecha se registra la del momento de la operaci&oacute;n.
 	 * 
 	 * @param newOpModel Objeto OperationModel mapeado por la vista
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
-	 * @return Nombre de la vista a mostrar: redirige al método {@link #showOperations(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al m&eacute;todo {@link #showOperations(Model)}
 	 * @throws Exception Captura las posibles excepciones de mapeo y extracci&oacute;n de datos
 	 */
 	@PostMapping("/actWithdrawal")
 	private String addWithdrawal(@Valid @ModelAttribute OperationModel newOpModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");			
+			throw new Exception("Parámetros de búsqueda erróneos.");			
 		} else {
 			//Lo primero de todo es comprobar que tiene saldo
 			//Si no lo tuviera cancelamos la operación
@@ -158,7 +158,7 @@ public class OperationController {
 			}
 			
 			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
-				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
+				throw new Exception("Operaci&oacute;n cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
 			} else {
 				Operation newOp = new Operation();			
 				
@@ -186,7 +186,7 @@ public class OperationController {
 				System.out.println(newOp.toString());
 				System.out.println(newOpModel.toString());
 				
-				// Se añade la nueva operación
+				// Se a&ntilde;ade la nueva operación
 				opServiceI.addOperation(newOp);	
 				
 				//Se actualiza el balance de la cuenta
@@ -200,22 +200,22 @@ public class OperationController {
 	}
 	
 	/**
-	 * Método para la acción de realizar una transferencia de una cuenta de un cliente potencial concreto
+	 * M&eacute;todo para la acci&oacute;n de realizar una transferencia de una cuenta de un cliente potencial concreto
 	 * a otra cuenta bancaria del sistema
 	 * 
 	 * Utilizamos el modelo OperationModel para recopilar los datos del formulario y con los
-	 * mismos construir dos objetos Operation (emisión y recepción). 
-	 * La fecha se registra la del momento de la operación.
+	 * mismos construir dos objetos Operation (emisi&oacute;n y recepci&oacute;n). 
+	 * La fecha se registra la del momento de la operaci&oacute;n.
 	 * 
 	 * @param newOpModel Objeto OperationModel mapeado por la vista
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
-	 * @return Nombre de la vista a mostrar: redirige al método {@link #showOperations(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al m&eacute;todo {@link #showOperations(Model)}
 	 * @throws Exception Captura las posibles excepciones de mapeo y extracci&oacute;n de datos
 	 */
 	@PostMapping("/actTransfer")
 	private String addTransfer(@Valid @ModelAttribute OperationModel newOpModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
-			throw new Exception("Parámetros de alta erróneos");			
+			throw new Exception("Parámetros de búsqueda erróneos.");			
 		} else {
 			//Lo primero de todo es comprobar que tiene saldo y la cuenta de origen y destino son diferentes
 			double amount;
@@ -226,9 +226,9 @@ public class OperationController {
 			}
 			
 			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
-				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
+				throw new Exception("Operaci&oacute;n cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
 			} else if(newOpModel.getAccountId() == newOpModel.getAccountIdTo()) {
-				throw new Exception("Operación cancelada: la cuenta origen y destino no pueden ser la misma.");
+				throw new Exception("Operaci&oacute;n cancelada: la cuenta origen y destino no pueden ser la misma.");
 			}else {
 				Operation newOpOrigin = new Operation();	
 				Operation newOpDestiny = new Operation();
@@ -263,7 +263,7 @@ public class OperationController {
 				System.out.println("Operacion de destino: " + newOpOrigin.toString());
 				System.out.println("Operacion recibida del modelo: " + newOpModel.toString());
 				
-				// Se añade la nueva operación
+				// Se añade la nueva operaci&oacute;n
 				opServiceI.addOperation(newOpOrigin);	
 				opServiceI.addOperation(newOpDestiny);	
 				

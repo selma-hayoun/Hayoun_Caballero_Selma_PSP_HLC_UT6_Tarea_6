@@ -8,7 +8,7 @@ import com.dam.springboot.repositories.OperationRepository;
 /**
  * Clase OperationServiceI: Interfaz del servicio para tabla Operaciones
  * 
- * Interfaz que recoge todos los métodos de CRUD para nuestra tabla Operaciones
+ * Interfaz que recoge todos los m&eacute;todos de CRUD para nuestra tabla Operaciones
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -20,52 +20,52 @@ import com.dam.springboot.repositories.OperationRepository;
 public interface OperationServiceI {
 	
 	/**
-	 * Método para listar todas las operaciones registradas en nuestro sistema
+	 * M&eacute;todo para listar todas las operaciones registradas en nuestro sistema
 	 * 
 	 * @return Lista de objetos Operation
 	 */
 	public List<Operation> findAllOperation();
 	
 	/**
-	 * Método para extraer un listado de operaciones según un listado de IDs de operaciones
+	 * M&eacute;todo para extraer un listado de operaciones seg&uacute;n un listado de IDs de operaciones
 	 * proporcionados
 	 * 
-	 * @param opIds Listado de Long, identificadores únicos de operaciones
-	 * @return Lista de objetos Operation cuyo ID coindice con alguno de los proporcionados como parámetro
+	 * @param opIds Listado de Long, identificadores &uacute;nicos de operaciones
+	 * @return Lista de objetos Operation cuyo ID coindice con alguno de los proporcionados como par&aacute;metro
 	 */
 	public List<Operation> findOperationsById(List<Long> opIds);	
 	
 	/**
-	 * Método para añadir una operación a la tabla Operaciones
+	 * M&eacute;todo para a&ntilde;adir una operaci&oacute;n a la tabla Operaciones
 	 * 
 	 * @param op Objeto Operation que se desea insertar
 	 */
 	public void addOperation(Operation op);
 	
 	/**
-	 * Método para eliminar una operación por su ID
+	 * M&eacute;todo para eliminar una operaci&oacute;n por su ID
 	 * 
-	 * @param IdOperation Long identificador único de la operación a eliminar
+	 * @param IdOperation Long identificador &uacute;nico de la operaci&oacute;n a eliminar
 	 */
 	public void removeOperationById(long IdOperation);
 	
 	/**
-	 * Método para actualizar los datos de un registro de la tabla Operaciones
+	 * M&eacute;todo para actualizar los datos de un registro de la tabla Operaciones
 	 * 
 	 * @param op Objeto Operation actualizado
 	 */
 	public void updateOperation(Operation op);	
 	
 	/**
-	 * Método para extraer las operaciones de una cuenta bancaria
+	 * M&eacute;todo para extraer las operaciones de una cuenta bancaria
 	 * 
-	 * @param id Long identificador único del objeto Account
-	 * @return Lista de operaciones vinculadas a ese ID (Clave foránea)
+	 * @param id Long identificador &uacute;nico del objeto Account
+	 * @return Lista de operaciones vinculadas a ese ID (Clave for&aacute;nea)
 	 */
 	public List<Operation> findOperationsByAccountId(Long id);
 	
 	/**
-	 * Método para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
+	 * M&eacute;todo para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
 	 * 
 	 * @return Listado de objetos Operation ordenados
 	 */

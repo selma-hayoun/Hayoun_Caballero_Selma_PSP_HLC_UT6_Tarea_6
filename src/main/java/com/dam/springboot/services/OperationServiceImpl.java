@@ -9,7 +9,7 @@ import com.dam.springboot.entities.Operation;
 import com.dam.springboot.repositories.OperationRepository;
 
 /**
- * Clase OperationServiceImpl: Implementa los métodos de la interfaz de servicio OperationServiceI
+ * Clase OperationServiceImpl: Implementa los m&eacute;todos de la interfaz de servicio OperationServiceI
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -21,13 +21,13 @@ import com.dam.springboot.repositories.OperationRepository;
 public class OperationServiceImpl implements OperationServiceI{
 
 	/**
-	 * Inyección de dependencias: Repositorio de la tabla Operaciones
+	 * Inyecci&oacute;n de dependencias: Repositorio de la tabla Operaciones
 	 */
 	@Autowired
 	private OperationRepository opRepository;
 	
 	/**
-	 * Implementación del método para listar todas las operaciones registradas en nuestro sistema
+	 * Implementaci&oacute;n del m&eacute;todo para listar todas las operaciones registradas en nuestro sistema
 	 * 
 	 * @return Lista de objetos Operation
 	 */
@@ -37,7 +37,7 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para añadir una operación a la tabla Operaciones
+	 * Implementaci&oacute;n del m&eacute;todo para a&ntilde;adir una operaci&oacute;n a la tabla Operaciones
 	 * 
 	 * @param op Objeto Operation que se desea insertar
 	 */
@@ -47,9 +47,9 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para eliminar una operación por su ID
+	 * Implementaci&oacute;n del m&eacute;todo para eliminar una operaci&oacute;n por su ID
 	 * 
-	 * @param IdOperation Long identificador único de la operación a eliminar
+	 * @param IdOperation Long identificador &uacute;nico de la operaci&oacute;n a eliminar
 	 */
 	@Override
 	public void removeOperationById(long IdOperation) {
@@ -57,7 +57,7 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para actualizar los datos de un registro de la tabla Operaciones
+	 * Implementaci&oacute;n del m&eacute;todo para actualizar los datos de un registro de la tabla Operaciones
 	 * 
 	 * @param op Objeto Operation actualizado
 	 */
@@ -67,11 +67,11 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para extraer un listado de operaciones según un listado de IDs de operaciones
+	 * Implementaci&oacute;n del m&eacute;todo para extraer un listado de operaciones seg&uacute;n un listado de IDs de operaciones
 	 * proporcionados
 	 * 
-	 * @param opIds Listado de Long, identificadores únicos de operaciones
-	 * @return Lista de objetos Operation cuyo ID coindice con alguno de los proporcionados como parámetro
+	 * @param opIds Listado de Long, identificadores &uacute;nicos de operaciones
+	 * @return Lista de objetos Operation cuyo ID coindice con alguno de los proporcionados como par&aacute;metro
 	 */
 	@Override
 	public List<Operation> findOperationsById(List<Long> opIds) {
@@ -79,10 +79,10 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para extraer las operaciones de una cuenta bancaria
+	 * Implementaci&oacute;n del m&eacute;todo para extraer las operaciones de una cuenta bancaria
 	 * 
-	 * @param id Long identificador único del objeto Account
-	 * @return Lista de operaciones vinculadas a ese ID (Clave foránea)
+	 * @param id Long identificador &uacute;nico del objeto Account
+	 * @return Lista de operaciones vinculadas a ese ID (Clave for&aacute;nea)
 	 */
 	@Override
 	public List<Operation> findOperationsByAccountId(Long id) {
@@ -90,7 +90,7 @@ public class OperationServiceImpl implements OperationServiceI{
 	}
 
 	/**
-	 * Implementación del método para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
+	 * Implementaci&oacute;n del m&eacute;todo para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
 	 * 
 	 * @return Listado de objetos Operation ordenados
 	 */

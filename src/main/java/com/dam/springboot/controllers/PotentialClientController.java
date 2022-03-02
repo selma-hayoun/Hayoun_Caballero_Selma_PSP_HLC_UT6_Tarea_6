@@ -49,7 +49,7 @@ public class PotentialClientController {
 	private AccountServiceI accServiceI;
 	
 	/**
-	 * Método para mostrar la vista showPotentialClients con todos los clientes potenciales
+	 * M&eacute;todo para mostrar la vista showPotentialClients con todos los clientes potenciales
 	 * 
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
@@ -67,11 +67,11 @@ public class PotentialClientController {
 	}
 
 	/**
-	 * Método de la acción de eliminar un cliente potencial
+	 * M&eacute;todo de la acci&oacute;n de eliminar un cliente potencial
 	 * 
 	 * @param pClientId Identificador &uacute;nico del cliente potencial
 	 * @param model Modelo de la vista
-	 * @return Nombre de la vista a mostrar: redirige al método {@link #showPotentialClients(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al m&eacute;todo {@link #showPotentialClients(Model)}
 	 */
 	@PostMapping("/actDropPClient")
 	public String removePotentialClient(@RequestParam String pClientId, Model model) {
@@ -99,12 +99,12 @@ public class PotentialClientController {
 	}
 	
 	/**
-	 * Método de la acción de mostrar las cuentas bancarias de un determinado cliente potencial
+	 * M&eacute;todo de la acci&oacute;n de mostrar las cuentas bancarias de un determinado cliente potencial
 	 * 
 	 * @param referrer Objeto para mantener la referencia de la &uacute;ltima vista que visit&oacute; y vinvularla al bot&oacute;n volver
 	 * @param pClientId Identificador del cliente cuyas cuentas bancarias se desean visualizar
 	 * @param model Modelo de la vista
-	 * @return Nombre de la vista a mostrar: redirige al método {@link AccountController#showAccounts(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al m&eacute;todo {@link AccountController#showAccounts(Model)}
 	 */
 	@PostMapping("/actAccountsPClient")
 	public String showAccountsPotentialClient(@RequestHeader(value = HttpHeaders.REFERER, required = false) final String referrer,@RequestParam String pClientId, Model model) {
@@ -123,12 +123,12 @@ public class PotentialClientController {
 	}
 	
 	/**
-	 * Método para la acción de mostrar búsqueda de clientes potenciales por los parámetros del 
+	 * M&eacute;todo para la acci&oacute;n de mostrar b&uacute;squeda de clientes potenciales por los par&aacute;metros del 
 	 * objeto PotentialClient recibido (nif o name).
 	 * 
-	 * A la vista de listar clientes potenciales se le añade a su modelo la lista resultante de buscar
+	 * A la vista de listar clientes potenciales se le a&ntilde;ade a su modelo la lista resultante de buscar
 	 * los par&aacute;metros introducidos por el usuario (uno u otro, teniendo prioridad el nif).
-	 * En caso de que el usuario no introduzca ningún campo, se le mostrará un listado con todos los 
+	 * En caso de que el usuario no introduzca ning&uacute;n campo, se le mostrar&aacute; un listado con todos los 
 	 * clientes potenciales.
 	 * 
 	 * @param searchedClient Objeto PotentialClient mapeado por la vista con los par&aacute;mentros introducidos por el usuario
@@ -175,11 +175,11 @@ public class PotentialClientController {
 	}
 
 	/**
-	 * Método para la acción de añadir un cliente potencial nuevo
+	 * M&eacute;todo para la acci&oacute;n de a&ntilde;adir un cliente potencial nuevo
 	 * 
 	 * @param newClient Objeto PotentialClient mapeado por la vista
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
-	 * @return Nombre de la vista a mostrar: redirige al mapeo del método {@link #showPotentialClients(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al mapeo del m&eacute;todo {@link #showPotentialClients(Model)}
 	 * @throws Exception Captura las posibles excepciones de mapeo y extracci&oacute;n de datos
 	 */
 	@PostMapping("/actAddClient")
@@ -188,7 +188,7 @@ public class PotentialClientController {
 			if(pClientServiceI.getPotentialClientByNif(newClient.getNif()) != null) {
 				throw new Exception("Ya existe un cliente dado de alta con ese NIF.");
 			} else {
-				throw new Exception("Parámetros de alta erróneos");
+				throw new Exception("Parámetros de búsqueda erróneos.");
 			}			
 		} else {
 			// Se añade el nuevo cliente
@@ -198,11 +198,11 @@ public class PotentialClientController {
 	}
 	
 	/**
-	 * Método para la acción de actualizar un cliente potencial del sistema
+	 * M&eacute;todo para la acci&oacute;n de actualizar un cliente potencial del sistema
 	 * 
 	 * @param client Objeto PotentialClient mapeado con los datos a actualizar
 	 * @param result Analiza el resultado de la operaci&oacute;n de lo devuelto por la vista, nos sirve para saber si ha habido errores en el mapeo
-	 * @return Nombre de la vista a mostrar: redirige al mapeo del método {@link #showPotentialClients(Model)}
+	 * @return Nombre de la vista a mostrar: redirige al mapeo del m&eacute;todo {@link #showPotentialClients(Model)}
 	 * @throws Exception Captura las posibles excepciones de mapeo y extracci&oacute;n de datos
 	 */
 	@PostMapping("/actUpdateClient")
@@ -211,7 +211,7 @@ public class PotentialClientController {
 			if(pClientServiceI.getPotentialClientByNif(client.getNif()) != null) {
 				throw new Exception("Ya existe un cliente dado de alta con ese NIF.");
 			} else {
-				throw new Exception("Parámetros de alta erróneos");
+				throw new Exception("Parámetros de búsqueda erróneos.");
 			}
 		} else {
 			pClientServiceI.updatePotentialClient(client);		

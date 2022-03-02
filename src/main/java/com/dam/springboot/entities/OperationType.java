@@ -1,7 +1,7 @@
 package com.dam.springboot.entities;
 
 /**
- * Enumerado con los tipos de operaciones posibles en nuestra aplicación
+ * Enumerado con los tipos de operaciones posibles en nuestra aplicaci&oacute;n
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -9,7 +9,7 @@ package com.dam.springboot.entities;
  */
 public enum OperationType {
 	/**
-	 * Depósito en una cuenta bancaria
+	 * Dep&oacute;sito en una cuenta bancaria
 	 */
 	DEPOSIT,
 	/**

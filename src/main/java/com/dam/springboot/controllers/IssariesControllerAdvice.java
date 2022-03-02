@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * Clase IssariesControllerAdvice para el control y visualización de errores
+ * Clase IssariesControllerAdvice para el control y visualizaci&oacute;n de errores
  * 
  * Asiste a los diferentes controladores. Si en alguna de sus operaciones se produce
- * una excepción, se redirige por este.
+ * una excepci&oacute;n, se redirige por este.
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class IssariesControllerAdvice {
 
 	/**
-	 * Método manejador de excepciones de la aplicación.
+	 * M&eacute;todo manejador de excepciones de la aplicaci&oacute;n.
 	 * 
-	 * Capta cualquier excepción en los métodos de cualquier controlador
+	 * Capta cualquier excepci&oacute;n en los m&eacute;todos de cualquier controlador
 	 * 
-	 * @param req Objeto que contiene toda la información de la solicitud HTTP
-	 * @param e Excepción producida
+	 * @param req Objeto que contiene toda la informaci&oacute;n de la solicitud HTTP
+	 * @param e Excepci&oacute;n producida
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
 	 */

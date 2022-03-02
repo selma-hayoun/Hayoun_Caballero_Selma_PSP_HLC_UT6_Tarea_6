@@ -14,11 +14,11 @@ import com.dam.springboot.services.AccountServiceI;
 import com.dam.springboot.services.PotentialClientServiceI;
 
 /**
- * Clase de nuestra aplicación
+ * Clase de nuestra aplicaci&oacute;n
  * 
- * Lanza nuestra aplicación.
- * CommandLineRunner permite sacar por consola información, lo ejecutado en el Run().
- * Normalmente no se utilizaría.
+ * Lanza nuestra aplicaci&oacute;n.
+ * CommandLineRunner permite sacar por consola informaci&oacute;n, lo ejecutado en el Run().
+ * Normalmente no se utilizar&iacute;a.
  * 
  * @author Selma Hayoun Caballero
  * @version 0.1, 01/03/2022
@@ -27,23 +27,23 @@ import com.dam.springboot.services.PotentialClientServiceI;
 @SpringBootApplication
 public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLineRunner{
 
-	/** Servicio: gestión de clientes potenciales.
-	 * Si tuvieramos varias clases de implementación de una interfaz
+	/** Servicio: gesti&oacute;n de clientes potenciales.
+	 * Si tuvieramos varias clases de implementaci&oacute;n de una interfaz
 	 * Utilizamos la etiqueta @Qualify(nombreDeLaClase) */
 	@Autowired
 	private PotentialClientServiceI potentialClientServiceI;
 	
 	/**
-	 * Servicio de acceso y gestión de cuentas de clientes
+	 * Servicio de acceso y gesti&oacute;n de cuentas de clientes
 	 */
 	@Autowired
 	private AccountServiceI accServiceI;
 	
 	
 	/**
-	 * Método principal de lanzamiento de la aplicación
+	 * M&eacute;todo principal de lanzamiento de la aplicaci&oacute;n
 	 * 
-	 * Lanza el run del hilo principal de la aplicación.
+	 * Lanza el run del hilo principal de la aplicaci&oacute;n.
 	 * 
 	 * @param args Argumentos de entrada
 	 */
@@ -52,10 +52,10 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 	}
 
 	/**
-	 * Método run de la aplicación
+	 * M&eacute;todo run de la aplicaci&oacute;n
 	 * 
-	 * Hilo principal de ejecución del proyecto.
-	 * Lo hemos utilizado para testeo y verificación en los primeros pasos de desarollo de la aplicación.
+	 * Hilo principal de ejecuci&oacute;n del proyecto.
+	 * Lo hemos utilizado para testeo y verificaci&oacute;n en los primeros pasos de desarollo de la aplicaci&oacute;n.
 	 */
 	@Override
 	public void run(String... args) throws Exception {
@@ -89,7 +89,7 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 		
 		System.out.println(pclt.toString());
 		
-		//Obtención de cuentas de cliente = 3
+		//Obtenci&oacute;n de cuentas de cliente = 3
 		List<Long> accountsId = potentialClientServiceI.findAccountsIdById(3L);
 		
 		List<Account> clientAccounts = accServiceI.findAccountsById(accountsId);
@@ -105,7 +105,7 @@ public class HayounCaballeroSelmaPspHlcUt6Tarea6Application implements CommandLi
 //		PotentialClient myTestClient = new PotentialClient();
 //		myTestClient.setNif("88888888-B");
 //		myTestClient.setSurname("Barasona Leon");
-//		myTestClient.setName("Verónica");
+//		myTestClient.setName("Veronica");
 //		myTestClient.setYearBirth(1978);
 //		myTestClient.setAddress("Avenida de la Gloria");
 //		myTestClient.setEmail("galadriel@gmail.com");

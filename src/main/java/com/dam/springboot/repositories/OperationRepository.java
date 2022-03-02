@@ -15,7 +15,7 @@ import com.dam.springboot.services.OperationServiceImpl;
  * Clase OperationRepository
  * 
  * Repositorio de nuestra tabla Operaciones.
- * Nos permite diseñar métodos personalizados de trabajo
+ * Nos permite dise&ntilde;ar m&eacute;todos personalizados de trabajo
  * en esta tabla.
  * 
  * @author Selma Hayoun Caballero
@@ -29,17 +29,17 @@ import com.dam.springboot.services.OperationServiceImpl;
 public interface OperationRepository extends JpaRepository<Operation, Long> {
 	
 	/**
-	 * Método para extraer las operaciones de una cuenta bancaria
+	 * M&eacute;todo para extraer las operaciones de una cuenta bancaria
 	 * 
-	 * @param id Long identificador único del objeto Account
-	 * @return Lista de operaciones vinculadas a ese ID (Clave foránea)
+	 * @param id Long identificador &uacute;nico del objeto Account
+	 * @return Lista de operaciones vinculadas a ese ID (Clave for&aacute;nea)
 	 */
 	@Query(value = "SELECT * FROM operaciones op WHERE op.account_id = :id",
 			nativeQuery = true)
 	List<Operation> findOperationsByAccountId(@Param("id") Long id);
 	
 	/**
-	 * Método para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
+	 * M&eacute;todo para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
 	 * 
 	 * @return Listado de objetos Operation ordenados
 	 */

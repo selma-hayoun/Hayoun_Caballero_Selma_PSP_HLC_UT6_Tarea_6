@@ -13,9 +13,9 @@ import com.dam.springboot.services.PotentialClientServiceI;
 import com.dam.springboot.entities.*;
 
 /**
- * Clase SystemController para gestión de todas las peticiones
+ * Clase SystemController para gesti&oacute;n de todas las peticiones
  * 
- * Asiste al sistema asimilando todas las peticiones y ayudando a la gestión de 
+ * Asiste al sistema asimilando todas las peticiones y ayudando a la gesti&oacute;n de 
  * las mismas entre los diferentes controladores.
  * 
  * @author Selma Hayoun Caballero
@@ -42,7 +42,7 @@ public class SystemController {
 	private AccountServiceI accountServiceI;
 	
 	/**
-	 * Método de mapeo del index de la aplicación
+	 * M&eacute;todo de mapeo del index de la aplicaci&oacute;n
 	 * 
 	 * @return Nombre de la vista a mostrar
 	 */
@@ -52,9 +52,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: listado de clientes potenciales
+	 * M&eacute;todo de mapeo para la vista: listado de clientes potenciales
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link PotentialClientController#showPotentialClients(Model)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link PotentialClientController#showPotentialClients(Model)}
 	 */
 	@GetMapping("/clientsView")
 	public String redirectToClientsController() {
@@ -62,9 +62,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario de añadir clientes
+	 * M&eacute;todo de mapeo para la vista: formulario de a&ntilde;adir clientes
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link PotentialClientController#addNewPotentialClient(PotentialClient, BindingResult)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link PotentialClientController#addNewPotentialClient(PotentialClient, BindingResult)}
 	 */
 	@GetMapping("/newClientView")
 	public String showNewClientForm() {
@@ -72,7 +72,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario de actualizar clientes
+	 * M&eacute;todo de mapeo para la vista: formulario de actualizar clientes
 	 * 
 	 * @param pClientId Long identificador del cliente a actualizar
 	 * @param model Modelo de la vista
@@ -85,9 +85,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario de buscar clientes
+	 * M&eacute;todo de mapeo para la vista: formulario de buscar clientes
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link PotentialClientController#submitSearchClientForm(PotentialClient, Model)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link PotentialClientController#submitSearchClientForm(PotentialClient, Model)}
 	 */
 	@GetMapping("/searchClientByView")
 	public String showClientSearchForm() {
@@ -95,9 +95,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: listado de cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: listado de cuentas bancarias
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link AccountController#showAccounts(Model)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link AccountController#showAccounts(Model)}
 	 */
 	@GetMapping("/accountsView")
 	public String redirectToAccountsController() {
@@ -106,7 +106,7 @@ public class SystemController {
 	
 	
 	/**
-	 * Método de mapeo para la vista: formulario para añadir nuevas cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: formulario para a&ntilde;adir nuevas cuentas bancarias
 	 * 
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
@@ -118,14 +118,14 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario para actualizar cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: formulario para actualizar cuentas bancarias
 	 * 
-	 * Requiere una lista de los dueños de la cuenta y de todos los clientes potenciales para poder
+	 * Requiere una lista de los due&ntilde;os de la cuenta y de todos los clientes potenciales para poder
 	 * ser actualizado el campo myOwners.
 	 * 
 	 * @param accId Long identificador de la cuenta bancaria a actualizar
 	 * @param model Modelo de la vista
-	 * @return Nombre de la vista a mostrar: el método {@link AccountController#updateAccount(AccountModel, BindingResult)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link AccountController#updateAccount(AccountModel, BindingResult)}
 	 */
 	@PostMapping("/updateAccountView")
 	public String updateAccountForm(@RequestParam Long accId, Model model) {
@@ -136,9 +136,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario buscar cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: formulario buscar cuentas bancarias
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link AccountController#submitSearchAccountForm(Account, Model)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link AccountController#submitSearchAccountForm(Account, Model)}
 	 */
 	@GetMapping("/searchAccountByView")
 	public String showAccountSearchForm() {
@@ -146,9 +146,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: listado de todas las operaciones
+	 * M&eacute;todo de mapeo para la vista: listado de todas las operaciones
 	 * 
-	 * @return Nombre de la vista a mostrar: el método {@link OperationController#showOperations(Model)}
+	 * @return Nombre de la vista a mostrar: el m&eacute;todo {@link OperationController#showOperations(Model)}
 	 */
 	@GetMapping("/operationsView")
 	public String redirectToOperationsController() {
@@ -157,9 +157,9 @@ public class SystemController {
 	
 
 	/**
-	 * Método de mapeo para la vista: listado de clientes potenciales titulares de cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: listado de clientes potenciales titulares de cuentas bancarias
 	 * 
-	 * Desde la misma, según el cliente potencial seleccionado, podrán realizarse las operaciones de retirada, depósito y transferencia
+	 * Desde la misma, seg&uacute;n el cliente potencial seleccionado, podr&aacute;n realizarse las operaciones de retirada, dep&oacute;sito y transferencia
 	 * 
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
@@ -171,9 +171,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario para depósitos
+	 * M&eacute;todo de mapeo para la vista: formulario para dep&oacute;sitos
 	 * 
-	 * @param pClientId Long identificador del cliente potencial que realiza la operación
+	 * @param pClientId Long identificador del cliente potencial que realiza la operaci&oacute;n
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
 	 */
@@ -185,9 +185,9 @@ public class SystemController {
 	}
 	
 	/**
-	 * Método de mapeo para la vista: formulario para retiradas a cuenta
+	 * M&eacute;todo de mapeo para la vista: formulario para retiradas a cuenta
 	 * 
-	 * @param pClientId Long identificador del cliente potencial que realiza la operación
+	 * @param pClientId Long identificador del cliente potencial que realiza la operaci&oacute;n
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
 	 */
@@ -200,9 +200,9 @@ public class SystemController {
 	
 	
 	/**
-	 * Método de mapeo para la vista: formulario para transferencias entre cuentas bancarias
+	 * M&eacute;todo de mapeo para la vista: formulario para transferencias entre cuentas bancarias
 	 * 
-	 * @param pClientId Long identificador del cliente potencial que realiza la operación
+	 * @param pClientId Long identificador del cliente potencial que realiza la operaci&oacute;n
 	 * @param model Modelo de la vista
 	 * @return Nombre de la vista a mostrar
 	 */
@@ -211,7 +211,7 @@ public class SystemController {
 		model.addAttribute("myPClient", pClientServiceI.getById(pClientId));
 		model.addAttribute("clientAccs", accountServiceI.findAccountsById(pClientServiceI.findAccountsIdById(pClientId)));
 		model.addAttribute("myAccounts", accountServiceI.findAllAccount());
-//		//Listado de las cuentas de las que NO es dueño
+//		//Listado de las cuentas de las que NO es dueñ;o
 //		model.addAttribute("myAccounts", accountServiceI.findAccountsIdNotOwnedById(pClientServiceI.findAccountsIdById(pClientId)));
 		return "newTransfer";
 	}
