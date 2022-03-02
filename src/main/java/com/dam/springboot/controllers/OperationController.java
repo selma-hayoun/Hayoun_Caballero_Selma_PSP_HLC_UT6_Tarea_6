@@ -158,7 +158,7 @@ public class OperationController {
 			}
 			
 			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
-				throw new Exception("Operaci&oacute;n cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
+				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
 			} else {
 				Operation newOp = new Operation();			
 				
@@ -226,9 +226,9 @@ public class OperationController {
 			}
 			
 			if(accServiceI.getById(newOpModel.getAccountId()).getBalance() < amount) {
-				throw new Exception("Operaci&oacute;n cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
+				throw new Exception("Operación cancelada: no tiene suficiente saldo en su cuenta para retirar la cantidad solicitada.");
 			} else if(newOpModel.getAccountId() == newOpModel.getAccountIdTo()) {
-				throw new Exception("Operaci&oacute;n cancelada: la cuenta origen y destino no pueden ser la misma.");
+				throw new Exception("Operación cancelada: la cuenta origen y destino no pueden ser la misma.");
 			}else {
 				Operation newOpOrigin = new Operation();	
 				Operation newOpDestiny = new Operation();

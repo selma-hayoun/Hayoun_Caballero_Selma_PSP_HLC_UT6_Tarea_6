@@ -9,6 +9,11 @@
 		<div class="card text-white bg-light mb-3">
 		  <div class="card-header bg-info"><h2>Búsqueda de clientes</h2></div>
 		  <div class="card-body">
+		  <div>
+		  	<p class="text-warning font-weight-bold">ATENCIÓN: <br/>
+			Se realizará la búsqueda por el campo que rellene. Si rellena ambos se buscará por el primero: NIF
+			</p>
+		  </div>
 				<form th:action="@{/actSearchClient}" th:object="${searchedClient}" method="POST">
 					<div class="form-group">
 			  			<label class="text-info font-weight-bold" for="inpRegistration">NIF</label>

@@ -135,7 +135,7 @@ public class AccountController {
 	private String addNewAccount(@Valid @ModelAttribute AccountModel newAccountModel, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 			if(accServiceI.getAccountByNumAccount(newAccountModel.getNumAccount()) != null) {
-				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese n&uacute;mero de cuenta.");
+				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese número de cuenta.");
 			} else {
 				throw new Exception("Parámetros de búsqueda erróneos.");
 			}			
@@ -189,7 +189,7 @@ public class AccountController {
 	private String updateAccount(@Valid @ModelAttribute AccountModel acc, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 			if(accServiceI.getAccountByNumAccount(acc.getNumAccount()) != null) {
-				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese n&uacute;mero de cuenta.");
+				throw new Exception("Ya existe un cuenta bancaria dada de alta con ese número de cuenta.");
 			} else {
 				throw new Exception("Parámetros de búsqueda erróneos.");
 			}
