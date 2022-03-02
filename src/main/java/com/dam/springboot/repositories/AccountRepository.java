@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dam.springboot.entities.Account;
+import com.dam.springboot.services.AccountServiceI;
+import com.dam.springboot.services.AccountServiceImpl;
 
 /**
  * Clase AccountRepository
@@ -82,7 +84,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	 * proporcionados como parámetro. Se utilizó en iteraciones intermedias del programa para la implementación
 	 * de las vistas de actualización de la cuenta bancaria para limitar la información a visualizar.
 	 * 
-	 * @param Listado de IDs pertenecientes a un conjunto de clientes
+	 * @param idList Listado de IDs pertenecientes a un conjunto de clientes
 	 * @return Listado de cuentas bancarias que no son propiedad del listado de IDs proporcionados por parámetro
 	 */
 	@Query(value = "SELECT * FROM cuentas c WHERE c.id NOT IN(:idList)",

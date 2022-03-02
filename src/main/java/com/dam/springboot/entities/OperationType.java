@@ -8,8 +8,20 @@ package com.dam.springboot.entities;
  *
  */
 public enum OperationType {
+	/**
+	 * Depósito en una cuenta bancaria
+	 */
 	DEPOSIT,
+	/**
+	 * Retirada de una cuenta bancaria
+	 */
 	WITHDRAWAL,
+	/**
+	 * Salida de dinero de una cuenta bancaria para su transferencia
+	 */
 	ISSUED_TRANSFER,
+	/**
+	 * Entrada de dinero en una cuenta por una transferencia
+	 */
 	RECEIVED_TRANSFER
 }

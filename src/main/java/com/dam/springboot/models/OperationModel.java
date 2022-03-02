@@ -1,5 +1,7 @@
 package com.dam.springboot.models;
 
+import com.dam.springboot.entities.Operation;
+
 import lombok.Getter;
 import lombok.Setter;
 

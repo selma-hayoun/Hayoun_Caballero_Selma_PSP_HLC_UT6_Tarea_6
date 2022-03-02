@@ -27,6 +27,7 @@ import lombok.*;
  * @author Selma Hayoun Caballero
  * @version 0.1, 02/03/2022
  * @see Account
+ * @see OperationType
  */
 @Entity
 @Table(name = "operaciones")

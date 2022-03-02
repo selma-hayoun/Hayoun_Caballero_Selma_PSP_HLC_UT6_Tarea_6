@@ -8,42 +8,92 @@ import org.springframework.stereotype.Service;
 import com.dam.springboot.entities.Operation;
 import com.dam.springboot.repositories.OperationRepository;
 
+/**
+ * Clase OperationServiceImpl: Implementa los métodos de la interfaz de servicio OperationServiceI
+ * 
+ * @author Selma Hayoun Caballero
+ * @version 0.1, 02/03/2022
+ * @see Operation
+ * @see OperationServiceI
+ *
+ */
 @Service
 public class OperationServiceImpl implements OperationServiceI{
 
+	/**
+	 * Inyección de dependencias: Repositorio de la tabla Operaciones
+	 */
 	@Autowired
 	private OperationRepository opRepository;
 	
+	/**
+	 * Implementación del método para listar todas las operaciones registradas en nuestro sistema
+	 * 
+	 * @return Lista de objetos Operation
+	 */
 	@Override
 	public List<Operation> findAllOperation() {
 		return opRepository.findAll();
 	}
 
+	/**
+	 * Implementación del método para añadir una operación a la tabla Operaciones
+	 * 
+	 * @param op Objeto Operation que se desea insertar
+	 */
 	@Override
 	public void addOperation(Operation op) {
 		opRepository.save(op);		
 	}
 
+	/**
+	 * Implementación del método para eliminar una operación por su ID
+	 * 
+	 * @param IdOperation Long identificador único de la operación a eliminar
+	 */
 	@Override
 	public void removeOperationById(long IdOperation) {
 		opRepository.deleteById(IdOperation);		
 	}
 
+	/**
+	 * Implementación del método para actualizar los datos de un registro de la tabla Operaciones
+	 * 
+	 * @param op Objeto Operation actualizado
+	 */
 	@Override
 	public void updateOperation(Operation op) {
 		opRepository.save(op);		
 	}
 
+	/**
+	 * Implementación del método para extraer un listado de operaciones según un listado de IDs de operaciones
+	 * proporcionados
+	 * 
+	 * @param opIds Listado de Long, identificadores únicos de operaciones
+	 * @return Lista de objetos Operation cuyo ID coindice con alguno de los proporcionados como parámetro
+	 */
 	@Override
 	public List<Operation> findOperationsById(List<Long> opIds) {
 		return opRepository.findAllById(opIds);
 	}
 
+	/**
+	 * Implementación del método para extraer las operaciones de una cuenta bancaria
+	 * 
+	 * @param id Long identificador único del objeto Account
+	 * @return Lista de operaciones vinculadas a ese ID (Clave foránea)
+	 */
 	@Override
 	public List<Operation> findOperationsByAccountId(Long id) {
 		return opRepository.findOperationsByAccountId(id);
 	}
 
+	/**
+	 * Implementación del método para extraer todas las operaciones del sistema ordenadas por fecha (desdencente)
+	 * 
+	 * @return Listado de objetos Operation ordenados
+	 */
 	@Override
 	public List<Operation> findOperationsOrderByDate() {
 		return opRepository.findOperationsOrderByDate();
